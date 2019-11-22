@@ -1,0 +1,686 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>perspective.table Python API · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;&lt;code&gt;perspective.table&lt;/code&gt; contains &lt;code&gt;Table&lt;/code&gt; and &lt;code&gt;View&lt;/code&gt;, the data primitives of Perspective.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="perspective.table Python API · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://perspective.finos.org//index.html"/><meta property="og:description" content="&lt;p&gt;&lt;code&gt;perspective.table&lt;/code&gt; contains &lt;code&gt;Table&lt;/code&gt; and &lt;code&gt;View&lt;/code&gt;, the data primitives of Perspective.&lt;/p&gt;
+"/><meta property="og:image" content="https://perspective.finos.org/img/perspective.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://perspective.finos.org/img/perspective.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css"/><link rel="alternate" type="application/atom+xml" href="https://perspective.finos.org/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://perspective.finos.org/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:900&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective/dist/umd/perspective.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective-viewer/dist/umd/perspective-viewer.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective-viewer-hypergrid/dist/umd/perspective-viewer-hypergrid.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective-viewer-d3fc/dist/umd/perspective-viewer-d3fc.js"></script><script type="text/javascript" src="js/animation.js"></script><script type="text/javascript" src="js/logo.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/md/installation.html" target="_self">Docs</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/finos/perspective/" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">perspective.table Python API</h1></header><article><div><span><p><code>perspective.table</code> contains <code>Table</code> and <code>View</code>, the data primitives of Perspective.</p>
+<p>For usage, see the User Guide from the sidebar.</p>
+<h1><a class="anchor" aria-hidden="true" id="table"></a><a href="#table" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Table</h1>
+<h4><a class="anchor" aria-hidden="true" id="class-perspectivetabletabledata_or_schema-config"></a><a href="#class-perspectivetabletabledata_or_schema-config" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class perspective.table.Table(data_or_schema, **config)</h4>
+<p>Bases: <code>object</code></p>
+<h3><a class="anchor" aria-hidden="true" id="__init__data_or_schema-config"></a><a href="#__init__data_or_schema-config" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>_<em>init</em>_(data_or_schema, **config)</h3>
+<p>Construct a Table using the provided data or schema and optional
+configuration dictionary.</p>
+<p>Tables are immutable - column names and data types cannot be changed
+after creation. If a schema is provided, the table will be empty.
+Subsequent updates MUST conform to the column names and data types
+provided in the schema.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>data_or_schema</strong> (<em>dict/list/dataframe</em>) – Data or schema that
+initializes the table.</p></li>
+</ul>
+<ul>
+<li><strong>Keyword Arguments</strong></li>
+</ul>
+<pre><code class="hljs">* **index** (*str*) – A string column name to use as the Table’s primary key.
+
+
+* **limit** (*int*) – The maximum number of rows the Table should have.
+Cannot be set at the same time as `index`. Updates past the
+limit will begin writing at row 0.
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="compute"></a><a href="#compute" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>compute()</h3>
+<p>Returns whether the computed column feature is enabled.</p>
+<h3><a class="anchor" aria-hidden="true" id="clear"></a><a href="#clear" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>clear()</h3>
+<p>Removes all the rows in the Table, but preserves the schema and configuration.</p>
+<h3><a class="anchor" aria-hidden="true" id="replacedata"></a><a href="#replacedata" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>replace(data)</h3>
+<p>Replaces all rows in the Table with the new data that conforms to the Table’s schema.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>data</strong> (<em>dict|list|dataframe</em>) – New data that will be filled into the Table.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="size"></a><a href="#size" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>size()</h3>
+<p>Returns the row count of the Table.</p>
+<h3><a class="anchor" aria-hidden="true" id="schemaas_string-false"></a><a href="#schemaas_string-false" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>schema(as_string=False)</h3>
+<p>Returns the schema of this Table.</p>
+<p>A schema provides the mapping of string column names to python data types.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>as_string</strong> (<em>bool</em>) – returns the data types as string representations, if True</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A key-value mapping of column names to data types.</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>dict</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="columnscomputed-false"></a><a href="#columnscomputed-false" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>columns(computed=False)</h3>
+<p>Returns the column names of this dataset.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>computed</strong> (<em>bool</em>) – whether to include computed columns in this array. Defaults to False.</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a list of string column names</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>list</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="computed_schema"></a><a href="#computed_schema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>computed_schema()</h3>
+<p>Returns a schema of computed columns added by the user.</p>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a key-value mapping of column names to computed columns. Each value is a dictionary that contains <code>column_name</code>, <code>column_type</code>, and <code>computation</code>.</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>dict</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="is_valid_filterfilter"></a><a href="#is_valid_filterfilter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>is_valid_filter(filter)</h3>
+<p>Tests whether a given filter configuration is valid - that the filter term is not None or an unparsable date/datetime.</p>
+<h3><a class="anchor" aria-hidden="true" id="updatedata"></a><a href="#updatedata" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>update(data)</h3>
+<p>Update the Table with new data.</p>
+<p>Updates on tables without an explicit <code>index</code> are treated as appends.</p>
+<p>Updates on tables with an explicit <code>index</code> should have the index as part of the <code>data</code> param, as this instructs the engine
+to locate the indexed row and write into it. If an index is not provided, the update is treated as an append.</p>
+<h3><a class="anchor" aria-hidden="true" id="examples"></a><a href="#examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>tbl = Table({<span class="hljs-string">"a"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-string">"b"</span>: [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>]}, index=<span class="hljs-string">"a"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>tbl.update({<span class="hljs-string">"a"</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-string">"b"</span>: [<span class="hljs-string">"a"</span>, <span class="hljs-string">"a"</span>]})
+<span class="hljs-meta">&gt;&gt;&gt; </span>tbl.view().to_dict()
+{<span class="hljs-string">"a"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-string">"b"</span>: [<span class="hljs-string">"a"</span>, <span class="hljs-string">"a"</span>, <span class="hljs-string">"a"</span>]}
+</code></pre>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>data</strong> (<em>dict|list|dataframe</em>) – the data with which to update the Table</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="removepkeys"></a><a href="#removepkeys" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>remove(pkeys)</h3>
+<p>Removes the rows with the primary keys specified in <code>pkeys</code>.</p>
+<p>If the table does not have an index, <code>remove()</code> has no effect. Removes propagate to views derived from the table.</p>
+<h3><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>tbl = Table({<span class="hljs-string">"a"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]}, index=<span class="hljs-string">"a"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>tbl.remove([<span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>tbl.view().to_records()
+[{<span class="hljs-string">"a"</span>: <span class="hljs-number">1</span>}]
+</code></pre>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>pkeys</strong> (<em>list</em>) – a list of primary keys to indicate the rows that should be removed.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="view-config"></a><a href="#view-config" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>view(**config)</h3>
+<p>Create a new View from this table with the configuration options in config.</p>
+<p>A View is an immutable set of transformations on the underlying Table, which allows
+for querying, pivoting, aggregating, sorting, and filtering of data.</p>
+<p>Keyword Arguments:</p>
+<p>columns <code>(list[str])</code></p>
+<ul>
+<li>A list of column names to be visible to the user.</li>
+</ul>
+<p>row_pivots <code>(list[str])</code></p>
+<ul>
+<li>A list of column names to use as row pivots.</li>
+</ul>
+<p>column_pivots <code>(list[str])</code></p>
+<ul>
+<li>A list of column names to use as column pivots.</li>
+</ul>
+<p>aggregates <code>(dict[str:str])</code></p>
+<ul>
+<li>A dictionary of column names to aggregate types, which specify aggregates for individual columns.</li>
+</ul>
+<p>sort <code>(list[list[str]])</code></p>
+<ul>
+<li>A list of lists, each list containing a column name and a sort direction (asc, desc, col asc, col desc).</li>
+</ul>
+<p>filter <code>(list[list[str]])</code></p>
+<ul>
+<li>A list of lists, each list containing a column name, a filter comparator, and a value to filter by.</li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a new <code>perspective.View</code> instance.</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>perspective.table.view.View</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="examples-1"></a><a href="#examples-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>tbl = Table({<span class="hljs-string">"a"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]})
+<span class="hljs-meta">&gt;&gt;&gt; </span>view = tbl.view(filter=[[<span class="hljs-string">"a"</span>, <span class="hljs-string">"=="</span>, <span class="hljs-number">1</span>]]
+<span class="hljs-meta">&gt;&gt;&gt; </span>view.to_dict()
+<span class="hljs-meta">&gt;&gt;&gt; </span>{<span class="hljs-string">"a"</span>: [<span class="hljs-number">1</span>]}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="on_deletecallback"></a><a href="#on_deletecallback" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>on_delete(callback)</h3>
+<p>Register a callback with the table that will be invoked when the <code>delete()</code> method is called on the Table.</p>
+<h3><a class="anchor" aria-hidden="true" id="examples-2"></a><a href="#examples-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deleter</span><span class="hljs-params">()</span>:</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>    print(<span class="hljs-string">"Delete called!"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>table.on_delete(deleter)
+<span class="hljs-meta">&gt;&gt;&gt; </span>table.delete()
+<span class="hljs-meta">&gt;&gt;&gt; </span>Delete called!
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="remove_deletecallback"></a><a href="#remove_deletecallback" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>remove_delete(callback)</h3>
+<p>Remove the delete callback associated with this table.</p>
+<h3><a class="anchor" aria-hidden="true" id="examples-3"></a><a href="#examples-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deleter</span><span class="hljs-params">()</span>:</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>    print(<span class="hljs-string">"Delete called!"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>table.on_delete(deleter)
+<span class="hljs-meta">&gt;&gt;&gt; </span>table.remove_delete(deleter)
+<span class="hljs-meta">&gt;&gt;&gt; </span>table.delete()
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="delete"></a><a href="#delete" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>delete()</h3>
+<p>Delete this table and clean up associated resources in the core engine.</p>
+<p>Tables with associated views cannot be deleted.</p>
+<h1><a class="anchor" aria-hidden="true" id="view"></a><a href="#view" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>View</h1>
+<h4><a class="anchor" aria-hidden="true" id="class-perspectivetableviewviewtable-config"></a><a href="#class-perspectivetableviewviewtable-config" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class perspective.table.view.View(Table, **config)</h4>
+<p>Bases: <code>object</code></p>
+<h3><a class="anchor" aria-hidden="true" id="__init__table-config"></a><a href="#__init__table-config" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>_<em>init</em>_(Table, **config)</h3>
+<p>Use the <code>Table.view()</code> method to create Views.</p>
+<p>A View object represents a specific transform (configuration or pivot,
+filter, sort, etc) configuration on an underlying Table. A View
+receives all updates from the Table from which it is derived, and
+can be serialized to JSON or trigger a callback when it is updated.</p>
+<p>View objects are immutable, and will remain in memory and actively process
+updates until its delete() method is called.</p>
+<h3><a class="anchor" aria-hidden="true" id="get_config"></a><a href="#get_config" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_config()</h3>
+<p>Returns the original dictionary config passed in by the user.</p>
+<h3><a class="anchor" aria-hidden="true" id="sides"></a><a href="#sides" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>sides()</h3>
+<p>Returns the number of pivoted sides of this View.</p>
+<p>0-sided views have no pivots applied.
+1-sided views have one or more row_pivots applied.
+2-sided views have one or more row_pivots and column_pivots applied, or one or more column_pivots without row_pivots.</p>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>0, 1, or 2</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>int</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="num_rows"></a><a href="#num_rows" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>num_rows()</h3>
+<p>The number of aggregated rows in the View. This is affected by the row_pivots that are applied to the View.</p>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>number of rows</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>int</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="num_columns"></a><a href="#num_columns" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>num_columns()</h3>
+<p>The number of aggregated columns in the View. This is affected by the column_pivots that are applied to the View.</p>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>number of columns</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>int</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get_row_expandedidx"></a><a href="#get_row_expandedidx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_row_expanded(idx)</h3>
+<p>Returns whether row at idx is expanded or collapsed.</p>
+<h3><a class="anchor" aria-hidden="true" id="expandidx"></a><a href="#expandidx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>expand(idx)</h3>
+<p>Expands the row at ‘idx’, i.e. displaying its leaf rows.</p>
+<h3><a class="anchor" aria-hidden="true" id="collapseidx"></a><a href="#collapseidx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>collapse(idx)</h3>
+<p>Collapses the row at ‘idx’, i.e. hiding its leaf rows.</p>
+<h3><a class="anchor" aria-hidden="true" id="set_depthdepth"></a><a href="#set_depthdepth" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>set_depth(depth)</h3>
+<p>Sets the expansion depth of the pivot tree.</p>
+<h3><a class="anchor" aria-hidden="true" id="column_paths"></a><a href="#column_paths" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>column_paths()</h3>
+<p>Returns the names of the columns as they show in the view, i.e. the composed columns
+when a column pivot is applied.</p>
+<h3><a class="anchor" aria-hidden="true" id="schemaas_string-false-1"></a><a href="#schemaas_string-false-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>schema(as_string=False)</h3>
+<p>The schema of this view, which is a key-value map that contains the column names and their Python data types.</p>
+<p>If the columns are aggregated, their aggregated types will be shown.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>as_string</strong> (<em>bool</em>) – returns data types as string representations, if True</p></li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a map of strings to strings</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>schema</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="on_updatecallback-mode-none"></a><a href="#on_updatecallback-mode-none" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>on_update(callback, mode=None)</h3>
+<p>Add a callback to be fired when <code>Table.update()</code> is called on the underlying table.</p>
+<p>Multiple callbacks can be set through calling <code>on_update</code> multiple times, and will be called in the order they are set.</p>
+<p>Callback must be a callable function that takes no parameters.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>callback</strong> (<em>callable</em>) – a callable function reference that will be called when <code>update()</code> is called.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="examples-4"></a><a href="#examples-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<pre><code class="hljs css language-python">&gt;&gt;&gt; def updater():
+&gt;&gt;&gt;     print("Update fired!")
+&gt;&gt;&gt; view.on_update(updater)
+&gt;&gt;&gt; table.update({"a": [1]})'
+&gt;&gt;&gt; Update fired!
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="remove_updatecallback"></a><a href="#remove_updatecallback" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>remove_update(callback)</h3>
+<p>Given a callback function, remove it from the list of callbacks.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>callback</strong> (<em>func</em>) – a function reference that will be removed.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="examples-5"></a><a href="#examples-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>table = perspective.Table(data)
+<span class="hljs-meta">&gt;&gt;&gt; </span>view = table.view()
+<span class="hljs-meta">&gt;&gt;&gt; </span>view2 = table.view()
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">callback</span><span class="hljs-params">()</span>:</span>
+        print(<span class="hljs-string">"called!"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>view.on_update(callback)
+<span class="hljs-meta">&gt;&gt;&gt; </span>view2.on_update(callback)
+<span class="hljs-meta">&gt;&gt;&gt; </span>table.update(new_data)
+called!
+<span class="hljs-meta">&gt;&gt;&gt; </span>view2.remove_update(callback)
+<span class="hljs-meta">&gt;&gt;&gt; </span>table.update(new_data) <span class="hljs-comment"># callback removed and will not fire</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="on_deletecallback-1"></a><a href="#on_deletecallback-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>on_delete(callback)</h3>
+<p>Set a callback to be run when the <code>delete()</code> method is called on the View.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>callback</strong> (<em>callable</em>) – a callback to run after <code>delete()</code> has been called.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="examples-6"></a><a href="#examples-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deleter</span><span class="hljs-params">()</span>:</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>    print(<span class="hljs-string">"Delete called!"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>view.on_delete(deleter)
+<span class="hljs-meta">&gt;&gt;&gt; </span>view.delete()
+<span class="hljs-meta">&gt;&gt;&gt; </span>Delete called!
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="delete-1"></a><a href="#delete-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>delete()</h3>
+<p>Delete the view and clean up all callbacks associated with the view.</p>
+<p>This method must be called to clean up resources used by the View.</p>
+<h3><a class="anchor" aria-hidden="true" id="examples-7"></a><a href="#examples-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>table = perspective.Table(data)
+<span class="hljs-meta">&gt;&gt;&gt; </span>view = table.view()
+<span class="hljs-meta">&gt;&gt;&gt; </span>view.delete()
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="remove_deletecallback-1"></a><a href="#remove_deletecallback-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>remove_delete(callback)</h3>
+<p>Remove the delete callback associated with this view.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>callback</strong> (<em>callable</em>) – a reference to a callable function that will be removed from delete callbacks.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="examples-8"></a><a href="#examples-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>table = perspective.Table(data)
+<span class="hljs-meta">&gt;&gt;&gt; </span>view = table.view()
+<span class="hljs-meta">&gt;&gt;&gt; </span>view2 = table.view()
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">callback</span><span class="hljs-params">()</span>:</span>
+        print(<span class="hljs-string">"called!"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>view.on_delete(callback)
+<span class="hljs-meta">&gt;&gt;&gt; </span>view2.on_delete(callback)
+<span class="hljs-meta">&gt;&gt;&gt; </span>view.delete()
+called!
+<span class="hljs-meta">&gt;&gt;&gt; </span>view2.remove_delete(callback)
+<span class="hljs-meta">&gt;&gt;&gt; </span>view2.delete() <span class="hljs-comment"># callback removed and will not fire</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="to_records-options"></a><a href="#to_records-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>to_records(**options)</h3>
+<p>Serialize the view’s dataset into a <code>list</code> of <code>dict</code> containing each individual row.</p>
+<p>If the view is aggregated, the aggregated dataset will be returned.</p>
+<p>Keyword Arguments:</p>
+<p>start_row <code>(int)</code></p>
+<ul>
+<li>The row at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_row <code>(int)</code></p>
+<ul>
+<li>The non-inclusive row to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>start_col <code>(int)</code></p>
+<ul>
+<li>The column at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_col <code>(int)</code></p>
+<ul>
+<li>The non-inclusive column to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>index <code>(int)</code></p>
+<ul>
+<li>Whether to return an implicit pkey for each row. Defaults to False.</li>
+</ul>
+<p>leaves_only <code>(int)</code></p>
+<ul>
+<li>Whether to return only the data at the end of the tree. Defaults to False.</li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of dictionaries, where each dict represents a new row of the dataset</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>list</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="to_dict-options"></a><a href="#to_dict-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>to_dict(**options)</h3>
+<p>Serialize the view’s dataset into a dict of str keys and list values.
+Each key is a column name, and the associated value is the column’s data packed into a list.</p>
+<p>If the view is aggregated, the aggregated dataset will be returned.</p>
+<p>Keyword Arguments:</p>
+<p>start_row <code>(int)</code></p>
+<ul>
+<li>The row at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_row <code>(int)</code></p>
+<ul>
+<li>The non-inclusive row to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>start_col <code>(int)</code></p>
+<ul>
+<li>The column at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_col <code>(int)</code></p>
+<ul>
+<li>The non-inclusive column to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>index <code>(int)</code></p>
+<ul>
+<li>Whether to return an implicit pkey for each row. Defaults to False.</li>
+</ul>
+<p>leaves_only <code>(int)</code></p>
+<ul>
+<li>Whether to return only the data at the end of the tree. Defaults to False.</li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a dictionary with string keys and list values, where key = column name and value = column values</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>dict</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="to_numpy-options"></a><a href="#to_numpy-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>to_numpy(**options)</h3>
+<p>Serialize the view’s dataset into a <code>dict</code> of <code>str</code> keys and <code>numpy.array</code> values.
+Each key is a column name, and the associated value is the column’s data packed into a numpy array.</p>
+<p>Keyword Arguments:</p>
+<p>start_row <code>(int)</code></p>
+<ul>
+<li>The row at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_row <code>(int)</code></p>
+<ul>
+<li>The non-inclusive row to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>start_col <code>(int)</code></p>
+<ul>
+<li>The column at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_col <code>(int)</code></p>
+<ul>
+<li>The non-inclusive column to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>index <code>(int)</code></p>
+<ul>
+<li>Whether to return an implicit pkey for each row. Defaults to False.</li>
+</ul>
+<p>leaves_only <code>(int)</code></p>
+<ul>
+<li>Whether to return only the data at the end of the tree. Defaults to False.</li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a dictionary with string keys and numpy array values, where key = column name and value = column values</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>dict</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="to_df-options"></a><a href="#to_df-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>to_df(**options)</h3>
+<p>Serialize the view’s dataset into a pandas dataframe.</p>
+<p>If the view is aggregated, the aggregated dataset will be returned.</p>
+<p>Keyword Arguments:</p>
+<p>start_row <code>(int)</code></p>
+<ul>
+<li>The row at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_row <code>(int)</code></p>
+<ul>
+<li>The non-inclusive row to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>start_col <code>(int)</code></p>
+<ul>
+<li>The column at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_col <code>(int)</code></p>
+<ul>
+<li>The non-inclusive column to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>index <code>(int)</code></p>
+<ul>
+<li>Whether to return an implicit pkey for each row. Defaults to False.</li>
+</ul>
+<p>leaves_only <code>(int)</code></p>
+<ul>
+<li>Whether to return only the data at the end of the tree. Defaults to False.</li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a pandas dataframe containing the serialized data.</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>pandas.DataFrame</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="to_csv-options"></a><a href="#to_csv-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>to_csv(**options)</h3>
+<p>Serialize the view’s dataset into a CSV string.</p>
+<p>Keyword Arguments:</p>
+<p>start_row <code>(int)</code></p>
+<ul>
+<li>The row at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_row <code>(int)</code></p>
+<ul>
+<li>The non-inclusive row to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>start_col <code>(int)</code></p>
+<ul>
+<li>The column at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_col <code>(int)</code></p>
+<ul>
+<li>The non-inclusive column to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>index <code>(int)</code></p>
+<ul>
+<li>Whether to return an implicit pkey for each row. Defaults to False.</li>
+</ul>
+<p>leaves_only <code>(int)</code></p>
+<ul>
+<li>Whether to return only the data at the end of the tree. Defaults to False.</li>
+</ul>
+<p>date_format <code>(str)</code></p>
+<ul>
+<li>How <code>datetime</code> objects should be formatted in the CSV.</li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a CSV-formatted string containing the serialized data.</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>str</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="to_json-options"></a><a href="#to_json-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>to_json(**options)</h3>
+<p>Serialize the view’s dataset into a <code>list</code> of <code>dict</code> containing each individual row.</p>
+<p>If the view is aggregated, the aggregated dataset will be returned.</p>
+<p>Keyword Arguments:</p>
+<p>start_row <code>(int)</code></p>
+<ul>
+<li>The row at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_row <code>(int)</code></p>
+<ul>
+<li>The non-inclusive row to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>start_col <code>(int)</code></p>
+<ul>
+<li>The column at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_col <code>(int)</code></p>
+<ul>
+<li>The non-inclusive column to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>index <code>(int)</code></p>
+<ul>
+<li>Whether to return an implicit pkey for each row. Defaults to False.</li>
+</ul>
+<p>leaves_only <code>(int)</code></p>
+<ul>
+<li>Whether to return only the data at the end of the tree. Defaults to False.</li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>A list of dictionaries, where each dict represents a new row of the dataset</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>list</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="to_columns-options"></a><a href="#to_columns-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>to_columns(**options)</h3>
+<p>Serialize the view’s dataset into a dict of str keys and list values.
+Each key is a column name, and the associated value is the column’s data packed into a list.</p>
+<p>If the view is aggregated, the aggregated dataset will be returned.</p>
+<p>Keyword Arguments:</p>
+<p>start_row <code>(int)</code></p>
+<ul>
+<li>The row at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_row <code>(int)</code></p>
+<ul>
+<li>The non-inclusive row to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>start_col <code>(int)</code></p>
+<ul>
+<li>The column at which to begin serializing. Defaults to 0.</li>
+</ul>
+<p>end_col <code>(int)</code></p>
+<ul>
+<li>The non-inclusive column to end serialization at. Defaults to the number of total rows in the view.</li>
+</ul>
+<p>index <code>(int)</code></p>
+<ul>
+<li>Whether to return an implicit pkey for each row. Defaults to False.</li>
+</ul>
+<p>leaves_only <code>(int)</code></p>
+<ul>
+<li>Whether to return only the data at the end of the tree. Defaults to False.</li>
+</ul>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>a dictionary with string keys and list values, where key = column name and value = column values</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>dict</p></li>
+</ul>
+<h1><a class="anchor" aria-hidden="true" id="view-config-1"></a><a href="#view-config-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>View Config</h1>
+<h4><a class="anchor" aria-hidden="true" id="class-perspectivetableview_configviewconfig-config"></a><a href="#class-perspectivetableview_configviewconfig-config" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class perspective.table.view_config.ViewConfig(**config)</h4>
+<p>Bases: <code>object</code></p>
+<p>Defines the configuration for a View object.</p>
+<h3><a class="anchor" aria-hidden="true" id="__init__-config"></a><a href="#__init__-config" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>_<em>init</em>_(**config)</h3>
+<p>Receives a user-provided config dict and standardizes it for consumption by the python client and the core engine.</p>
+<p>Keyword Arguments:</p>
+<p>columns <code>(list[str])</code></p>
+<ul>
+<li>A list of column names to be visible to the user.</li>
+</ul>
+<p>row_pivots <code>(list[str])</code></p>
+<ul>
+<li>A list of column names to use as row pivots, thus grouping data by row.</li>
+</ul>
+<p>column_pivots <code>(list[str])</code></p>
+<ul>
+<li>A list of column names to use as column pivots, thus grouping data by column.</li>
+</ul>
+<p>aggregates <code>(dict[str:str])</code></p>
+<ul>
+<li>A dictionary of column names to aggregate types, which specify aggregates for individual columns.</li>
+</ul>
+<p>sort <code>(list[list[str]])</code></p>
+<ul>
+<li>A list of lists, each list containing a column name and a sort direction (asc, desc, col asc, col desc).</li>
+</ul>
+<p>filter <code>(list[list[str]])</code></p>
+<ul>
+<li>A list of lists, each list containing a column name, a filter comparator, and a value to filter by.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get_row_pivots"></a><a href="#get_row_pivots" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_row_pivots()</h3>
+<p>The columns used as <a href="[https://en.wikipedia.org/wiki/Pivot_table#Row_labels](https://en.wikipedia.org/wiki/Pivot_table#Row_labels)">row pivots</a></p>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>the columns used as row pivots</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>list</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get_column_pivots"></a><a href="#get_column_pivots" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_column_pivots()</h3>
+<p>The columns used as <a href="[https://en.wikipedia.org/wiki/Pivot_table#Column_labels](https://en.wikipedia.org/wiki/Pivot_table#Column_labels)">column pivots</a></p>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>the columns used as column pivots</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>list</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get_aggregates"></a><a href="#get_aggregates" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_aggregates()</h3>
+<p>Defines the grouping of data within columns.</p>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>str] : a vector of string vectors in which the first value is the column name, and the second value is the string representation of an aggregate</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>dict[str</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get_columns"></a><a href="#get_columns" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_columns()</h3>
+<p>The columns that will be shown to the user in the view. If left empty, the view shows all columns in the dataset by default.</p>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>the columns shown to the user</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>list</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get_sort"></a><a href="#get_sort" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_sort()</h3>
+<p>The columns that should be sorted, and the direction to sort.</p>
+<p>A sort configuration is a list of two elements: a string column name, and a string sort direction, which are:
+“none”, “asc”, “desc”, “col asc”, “col desc”, “asc abs”, “desc abs”, “col asc abs”, and “col desc abs”.</p>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>the sort configurations of the view stored in a list of lists</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>list</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get_filter"></a><a href="#get_filter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_filter()</h3>
+<p>The columns that should be filtered.</p>
+<p>A filter configuration is a list of three elements:</p>
+<blockquote>
+<p>0: a string column name
+1: a filter comparison string (i.e. “===”, “&gt;”)
+2: a value to compare (this will be casted to match the type of the column)</p>
+</blockquote>
+<ul>
+<li><p><strong>Returns</strong></p>
+<p>the filter configurations of the view stored in a list of lists</p></li>
+</ul>
+<ul>
+<li><p><strong>Return type</strong></p>
+<p>list</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get_filter_op"></a><a href="#get_filter_op" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_filter_op()</h3>
+<p>When multiple filters are applied, filter_op defines how data should be returned.</p>
+<p>Defaults to “and” if not set by the user, meaning that data returned with multiple filters will satisfy all filters.</p>
+<p>If “or” is provided, returned data will satsify any one of the filters applied.</p>
+<p>Returns</p>
+<pre><code class="hljs">string : the filter_op of the view
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="get_config-1"></a><a href="#get_config-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_config()</h3>
+<p>Returns the original dictionary config passed by the user.</p>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/en/md/installation.html">Installation</a><a href="/docs/en/md/usage.html">Usage</a><a href="/docs/en/obj/perspective.html">Perspective API</a><a href="/docs/en/obj/perspective-viewer.html">Perspective Viewer API</a><a href="/docs/en/obj/perspective-python-table.html">Perspective Python API</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/finos/perspective/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Perspective Authors</section></footer></div></body></html>
