@@ -4,15 +4,26 @@
         <title> Blog</title>
         <link>https://perspective.finos.org//blog</link>
         <description>The best place to stay up-to-date with the latest  news and events.</description>
-        <lastBuildDate>Mon, 10 Jun 2019 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 06 Jan 2020 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
-        <generator>Feed for Node.js</generator>
+        <generator>https://github.com/jpmonette/feed</generator>
         <image>
             <title> Blog</title>
             <url>https://perspective.finos.org//img/logo.png</url>
             <link>https://perspective.finos.org//blog</link>
         </image>
-        <copyright>Copyright © 2019 Perspective Authors</copyright>
+        <copyright>Copyright © 2020 Perspective Authors</copyright>
+        <item>
+            <title><![CDATA[0.4.0 Release]]></title>
+            <link>https://perspective.finos.org//blog/2020/01/06/v0.4.0-release.html</link>
+            <guid>https://perspective.finos.org//blog/2020/01/06/v0.4.0-release.html</guid>
+            <pubDate>Mon, 06 Jan 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Perspective v0.4.0 is now available wherever open-source streaming columnar
+analytics engines are downloaded!  In addition to being FINOS' Most
+Contributed-To Project in 2020, Perspective achieves yet another first with
+v0.4.0 ...</p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA[0.3.0 Release]]></title>
             <link>https://perspective.finos.org//blog/2019/06/10/v0.3.0-release.html</link>
