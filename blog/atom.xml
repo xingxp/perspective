@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://perspective.finos.org//blog</id>
-    <title> Blog</title>
+    <title>Perspective Blog</title>
     <updated>2020-01-06T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://perspective.finos.org//blog"/>
-    <subtitle>The best place to stay up-to-date with the latest  news and events.</subtitle>
+    <subtitle>The best place to stay up-to-date with the latest Perspective news and events.</subtitle>
     <logo>https://perspective.finos.org//img/logo.png</logo>
     <rights>Copyright © 2020 Perspective Authors</rights>
     <entry>
