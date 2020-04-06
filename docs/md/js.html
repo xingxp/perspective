@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Javascript User Guide · Perspective</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Perspective&#x27;s Javascript library offers a flexible, intuitive UI on top of a"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Javascript User Guide · Perspective"/><meta property="og:type" content="website"/><meta property="og:url" content="https://perspective.finos.org//index.html"/><meta property="og:description" content="Perspective&#x27;s Javascript library offers a flexible, intuitive UI on top of a"/><meta property="og:image" content="https://perspective.finos.org/img/perspective.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://perspective.finos.org/img/perspective.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"/><link rel="alternate" type="application/atom+xml" href="https://perspective.finos.org/blog/atom.xml" title="Perspective Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://perspective.finos.org/blog/feed.xml" title="Perspective Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Public+Sans"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:900&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective/dist/umd/perspective.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective-viewer/dist/umd/perspective-viewer.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective-viewer-hypergrid/dist/umd/perspective-viewer-hypergrid.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective-viewer-d3fc/dist/umd/perspective-viewer-d3fc.js"></script><script type="text/javascript" src="js/animation.js"></script><script type="text/javascript" src="js/logo.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Perspective"/><h2 class="headerTitleWithLogo">Perspective</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/md/installation.html" target="_self">Docs</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/finos/perspective/" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Getting Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/md/installation.html">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/md/js.html">Javascript User Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/md/python.html">Python User Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/md/concepts.html">Conceptual Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/md/styles.html">CSS Styles</a></li><li class="navListItem"><a class="navItem" href="/docs/md/development.html">Developer Guide</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Javascript API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/obj/perspective.html">perspective API</a></li><li class="navListItem"><a class="navItem" href="/docs/obj/perspective-viewer.html">perspective-viewer API</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Python API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/obj/perspective-python.html">perspective-python API</a></li></ul></div></div></section></div><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Javascript User Guide · Perspective</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Perspective&#x27;s Javascript library offers a flexible, intuitive UI on top of a"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Javascript User Guide · Perspective"/><meta property="og:type" content="website"/><meta property="og:url" content="https://perspective.finos.org//index.html"/><meta property="og:description" content="Perspective&#x27;s Javascript library offers a flexible, intuitive UI on top of a"/><meta property="og:image" content="https://perspective.finos.org/img/perspective.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://perspective.finos.org/img/perspective.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"/><link rel="alternate" type="application/atom+xml" href="https://perspective.finos.org/blog/atom.xml" title="Perspective Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://perspective.finos.org/blog/feed.xml" title="Perspective Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Public+Sans"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:900&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective/dist/umd/perspective.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective-viewer/dist/umd/perspective-viewer.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective-viewer-datagrid/dist/umd/perspective-viewer-datagrid.js"></script><script type="text/javascript" src="https://unpkg.com/@finos/perspective-viewer-d3fc/dist/umd/perspective-viewer-d3fc.js"></script><script type="text/javascript" src="js/animation.js"></script><script type="text/javascript" src="js/logo.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Perspective"/><h2 class="headerTitleWithLogo">Perspective</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/md/installation.html" target="_self">Docs</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/finos/perspective/" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Getting Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/md/installation.html">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/md/js.html">Javascript User Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/md/python.html">Python User Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/md/concepts.html">Conceptual Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/md/styles.html">CSS Styles</a></li><li class="navListItem"><a class="navItem" href="/docs/md/development.html">Developer Guide</a></li></ul></div></div></section></div><script>
             var coll = document.getElementsByClassName('collapsible');
             var checkActiveCategory = true;
             for (var i = 0; i < coll.length; i++) {
@@ -76,11 +76,11 @@ notes for a quick example.</p>
 <p>To integrate Perspective with an existing data source in your application,
 you'll need to import the following modules:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">"@finos/perspective-viewer"</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-string">"@finos/perspective-viewer-hypergrid"</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"@finos/perspective-viewer-datagrid"</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-string">"@finos/perspective-viewer-d3fc"</span>;
 </code></pre>
 <p><code>perspective-viewer</code> provides a widget for users to transform and analyze
-their data, while <code>perspective-viewer-hypergrid</code> and <code>perspective-viewer-d3fc</code>
+their data, while <code>perspective-viewer-datagrid</code> and <code>perspective-viewer-d3fc</code>
 provide fast, flexible grid and chart visualization plugins, respectively.</p>
 <p>These modules register the <code>&lt;perspective-viewer&gt;</code>
 <a href="https://www.webcomponents.org/introduction">Web Component</a> for use within
@@ -138,12 +138,18 @@ Javascript libraries such as <a href="https://d3fc.io/">d3fc</a> are packaged se
 and must be imported individually.</p>
 <p>Perspective offers these plugin modules:</p>
 <ul>
-<li><p><code>@finos/perspective-viewer-hypergrid</code>  <br>
-A <code>&lt;perspective-viewer&gt;</code> plugin for
-<a href="https://github.com/fin-hypergrid/core">Hypergrid</a>.</p></li>
+<li><p><code>@finos/perspective-viewer-d3fc</code>  <br>
+A custom high-performance data-grid component based on HTML <code>&lt;table&gt;</code>.</p></li>
 <li><p><code>@finos/perspective-viewer-d3fc</code>  <br>
 A <code>&lt;perspective-viewer&gt;</code> plugin for the <a href="https://d3fc.io">d3fc</a> charting
 library.</p></li>
+</ul>
+<p>Also available are these legacy modules;  though no longer under development,
+they are compatible with perspective versions &lt; 1.0.0:</p>
+<ul>
+<li><p><code>@finos/perspective-viewer-hypergrid</code>  <br>
+A <code>&lt;perspective-viewer&gt;</code> plugin for
+<a href="https://github.com/fin-hypergrid/core">Hypergrid</a>.</p></li>
 <li><p><code>@finos/perspective-viewer-highcharts</code>  <br>
 A <code>&lt;perspective-viewer&gt;</code> plugin for
 <a href="https://github.com/highcharts/highcharts">HighCharts</a>. This plugin has a
@@ -164,7 +170,7 @@ your project:</p>
 <li><p>For Perspective as a simple, browser-based data visualization widget, import:</p>
 <ul>
 <li><code>@finos/perspective-viewer</code>, detailed <a href="#perspective-viewer-web-component">here</a></li>
-<li><code>@finos/perspective-viewer-hypergrid</code> for data grids</li>
+<li><code>@finos/perspective-viewer-datagrid</code> for data grids</li>
 <li><code>@finos/perspective-viewer-d3fc</code> for charting</li>
 <li>The core data engine <code>@finos/perspective</code> is a dependency of these packages
 and does not need to be imported on its own for basic usage.</li>
@@ -468,9 +474,6 @@ table.update([{ <span class="hljs-attr">volume</span>: <span class="hljs-number"
   }
 }
 </code></pre>
-<p>Styles defined within <code>format</code> are only currently read by
-<code>@finos/perspective-hypergrid</code>, and affect the formatting of all cells with the
-custom type set.</p>
 <h2><a class="anchor" aria-hidden="true" id="perspective-viewer-web-component"></a><a href="#perspective-viewer-web-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>perspective-viewer</code> web component</h2>
 <p><code>&lt;perspective-viewer&gt;</code> provides a complete graphical UI for configuring the
 <code>perspective</code> library and formatting its output to the provided visualization
@@ -480,7 +483,7 @@ you only need to import the <code>perspective-viewer</code> libraries somewhere 
 application - these modules export nothing, but rather register the components
 for use within your site's regular HTML:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">"@finos/perspective-viewer"</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-string">"@finos/perspective-viewer-hypergrid"</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"@finos/perspective-viewer-datagrid"</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-string">"@finos/perspective-viewer-d3fc"</span>;
 </code></pre>
 <p>While each plugin module by default will register all of its visualization
@@ -640,7 +643,7 @@ API, see the <a href="/docs/md/python.html">Python user guide</a> or the <a href
 <p>The simplest implementation uses Tornado as a websocket server in Python,
 hosting an endpoint at which a <code>table()</code> can be accessed:</p>
 <p><em><em>server.py</em></em></p>
-<pre><code class="hljs css language-python"><span class="hljs-keyword">from</span> perspective <span class="hljs-keyword">import</span> Table, PerspectiveManager, PerspectiveTornadoServer
+<pre><code class="hljs css language-python"><span class="hljs-keyword">from</span> perspective <span class="hljs-keyword">import</span> Table, PerspectiveManager, PerspectiveTornadoHandler
 
 <span class="hljs-comment"># Create an instance of PerspectiveManager, and host a Table</span>
 MANAGER = PerspectiveManager()
