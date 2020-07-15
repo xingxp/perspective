@@ -6,8 +6,11 @@
 # the Apache License 2.0.  The full license can be found in the LICENSE file.
 #
 
+import re
 import numpy as np
 import pandas as pd
+
+LEVEL_REGEX = re.compile(r'level_([0-9]\d*)')
 
 
 def _parse_datetime_index(index):
@@ -62,41 +65,8 @@ def deconstruct_pandas(data):
     '''
     kwargs = {}
 
-    # level unstacking
-    if isinstance(data, pd.DataFrame) and isinstance(data.columns, pd.MultiIndex):
-        data = pd.DataFrame(data.unstack())
-        columns = list(x for x in data.index.names if x)
-        kwargs['column_pivots'] = list(x for x in data.index.names if x)
-        kwargs['row_pivots'] = []
-        orig_columns = [' ' for _ in data.columns.tolist()]
-
-        # deal with indexes
-        if len(columns) < len(data.index.names):
-            for i in range(len(data.index.names) - len(columns)):
-                if i == 0:
-                    columns.append('index')
-                    kwargs['row_pivots'].append('index')
-                else:
-                    columns.append('index-{}'.format(i))
-                    kwargs['row_pivots'].append('index-{}'.format(i))
-
-        # all columns in index
-        columns += orig_columns
-        data.reset_index(inplace=True)
-        data.columns = columns
-
-        # use these columns
-        kwargs['columns'] = orig_columns
-
-    # Decompose Period index to timestamps
-    if isinstance(data.index, pd.PeriodIndex):
-        data.index = data.index.to_timestamp()
-
-    if isinstance(data.index, pd.MultiIndex):
-        kwargs['row_pivots'] = list(data.index.names)
-        kwargs['columns'] = data.columns.tolist()
-
-    if isinstance(data, pd.Series) or 'index' not in map(lambda x: str(x).lower(), data.columns):
+    # handle series first
+    if isinstance(data, pd.Series):
         flattened = data.reset_index()
 
         if isinstance(data, pd.Series):
@@ -105,7 +75,38 @@ def deconstruct_pandas(data):
 
             # make sure all columns are strings
             flattened.columns = [str(c) for c in flattened.columns]
+        return flattened, kwargs
 
-        data = flattened
+    # Decompose Period index to timestamps
+    if isinstance(data.index, pd.PeriodIndex):
+        data.index = data.index.to_timestamp()
+
+    # collect original index names
+    if isinstance(data.index, pd.MultiIndex):
+        index_names_orig = data.index.names
+    else:
+        if data.index.name is None:
+            data.index.name = 'index'
+        index_names_orig = [data.index.name]
+
+    # collect original column names
+    columns_names_orig = data.columns.names if isinstance(data.columns, pd.MultiIndex) else data.columns
+
+    if isinstance(data.index, pd.MultiIndex):
+        # row multiindex turns into row pivots
+        data.reset_index(inplace=True)
+
+    if isinstance(data.columns, pd.MultiIndex):
+        # column multiindex turns into column_pivots
+        s = data.unstack()
+        s.name = ' '
+        data = s.reset_index()
+
+        data.columns = [str(_) for _ in data.columns]
+        column_pivots = list(_ for _ in columns_names_orig if _ is not None)
+
+        kwargs['column_pivots'] = [_ for _ in data.columns if LEVEL_REGEX.match(_)] + column_pivots
+        kwargs['row_pivots'] = index_names_orig
+        kwargs['columns'] = [' ']
 
     return data, kwargs
