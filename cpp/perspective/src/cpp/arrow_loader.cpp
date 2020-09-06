@@ -58,44 +58,46 @@ namespace apachearrow {
     ArrowLoader::initialize(const uintptr_t ptr, const uint32_t length) {
         arrow::io::BufferReader buffer_reader(reinterpret_cast<const std::uint8_t*>(ptr), length);
         if (std::memcmp("ARROW1", (const void *)ptr, 6) == 0) {
-            std::shared_ptr<arrow::ipc::RecordBatchFileReader> batch_reader;
-            arrow::Status status = arrow::ipc::RecordBatchFileReader::Open(&buffer_reader, &batch_reader);        
+            auto status = arrow::ipc::RecordBatchFileReader::Open(&buffer_reader);        
             if (!status.ok()) {
                 std::stringstream ss;
-                ss << "Failed to open RecordBatchFileReader: " << status.message() << std::endl;
+                ss << "Failed to open RecordBatchFileReader: " << status.status().ToString() << std::endl;
                 PSP_COMPLAIN_AND_ABORT(ss.str());
             } else {
+                std::shared_ptr<arrow::ipc::RecordBatchFileReader> batch_reader = *status;
                 std::vector<std::shared_ptr<arrow::RecordBatch>> batches;
                 auto num_batches = batch_reader->num_record_batches();
                 for (int i = 0; i < num_batches; ++i) {
-                    std::shared_ptr<arrow::RecordBatch> chunk;
-                    status = batch_reader->ReadRecordBatch(i, &chunk);
-                    if (!status.ok()) {
+                    
+                    auto status2 = batch_reader->ReadRecordBatch(i);
+                    if (!status2.ok()) {
                         PSP_COMPLAIN_AND_ABORT(
-                            "Failed to read file record batch: " + status.message());
+                            "Failed to read file record batch: " + status2.status().ToString());
                     }
+                    std::shared_ptr<arrow::RecordBatch> chunk = *status2;
                     batches.push_back(chunk);
                 }
-                status = arrow::Table::FromRecordBatches(batches, &m_table);
-                if (!status.ok()) {
+                auto status3 = arrow::Table::FromRecordBatches(batches);
+                if (!status3.ok()) {
                     std::stringstream ss;
                     ss << "Failed to create Table from RecordBatches: "
-                       << status.message() << std::endl;
+                       << status3.status().ToString() << std::endl;
                     PSP_COMPLAIN_AND_ABORT(ss.str());
                 };
+                m_table = *status3;
             };
         } else {
-            std::shared_ptr<arrow::ipc::RecordBatchReader> batch_reader;
-            arrow::Status status = arrow::ipc::RecordBatchStreamReader::Open(&buffer_reader, &batch_reader); 
+            auto status = arrow::ipc::RecordBatchStreamReader::Open(&buffer_reader); 
             if (!status.ok()) {
                 std::stringstream ss;
-                ss << "Failed to open RecordBatchStreamReader: " << status.message() << std::endl;
+                ss << "Failed to open RecordBatchStreamReader: " << status.status().ToString() << std::endl;
                 PSP_COMPLAIN_AND_ABORT(ss.str());
             } else { 
-                status = batch_reader->ReadAll(&m_table);
-                if (!status.ok()) {
+                auto batch_reader = *status;
+                auto status5 = batch_reader->ReadAll(&m_table);
+                if (!status5.ok()) {
                     std::stringstream ss;
-                    ss << "Failed to read stream record batch: " << status.message() << std::endl;
+                    ss << "Failed to read stream record batch: " << status5.ToString() << std::endl;
                     PSP_COMPLAIN_AND_ABORT(ss.str());
                 };
             }
