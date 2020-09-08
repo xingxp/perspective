@@ -78,8 +78,10 @@ makes it simple to extend a Tornado server with virtual Perspective support.</p>
 <li><code>Table</code>, the table constructor for Perspective, which implements the <code>table</code>
 and <code>view</code> API in the same manner as the Javascript library.</li>
 <li><code>PerspectiveWidget</code> the JupyterLab widget for interactive visualization.</li>
-<li><code>PerspectiveManager</code> the session manager for shared server deployment, with a
-reference implementation in <a href="https://www.tornadoweb.org/">Tornado</a>.</li>
+<li><code>PerspectiveTornadoHandler</code>, an integration with <a href="https://www.tornadoweb.org/">Tornado</a>
+that interfaces seamlessly with <code>&lt;perspective-viewer&gt;</code> in Javascript.</li>
+<li><code>PerspectiveManager</code> the session manager for a shared server deployment of
+<code>perspective-python</code>.</li>
 </ul>
 <p>This user's guide provides an overview of the most common ways to use
 Perspective in Python: the <code>Table</code> API, the JupyterLab widget, and the Tornado
@@ -87,6 +89,8 @@ handler.</p>
 <p>For an understanding of Perspective's core concepts, see the
 <a href="/docs/md/concepts.html">Conceptual Overview</a>. For API documentation, see the
 <a href="/docs/obj/perspective-python.html">Python API</a>.</p>
+<p>For example code, see the <a href="https://github.com/finos/perspective/tree/master/python/perspective/examples">Python examples directory</a>
+on GitHub.</p>
 <h2><a class="anchor" aria-hidden="true" id="table"></a><a href="#table" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Table</code></h2>
 <p>A <code>Table</code> can be created from a dataset or a schema, the specifics of which are
 <a href="#loading-data-with-table">discussed</a> in the Javascript section of the user's
@@ -95,8 +99,8 @@ commonly used when processing data:</p>
 <ul>
 <li><code>pandas.DataFrame</code></li>
 <li><code>numpy.ndarray</code></li>
-<li><code>numpy.ndarray</code></li>
 <li><code>bytes</code> (encoding an Apache Arrow)</li>
+<li><code>objects</code> (either extracting a repr or via reference)</li>
 </ul>
 <p>A <code>Table</code> is created in a similar fashion to its Javascript equivalent:</p>
 <pre><code class="hljs css language-python"><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> date, datetime
@@ -125,12 +129,13 @@ structured arrays and record arrays. When passing in dictionaries of NumPy
 arrays, make sure that your dataset contains only NumPy arrays, and not a
 mixture of arrays and Python lists — this will raise an exception. Numpy
 structured/record arrays are parsed according to their field name and dtype.</p>
-<p><code>Table</code> can aslo be constructed from <code>pandas.DataFrame</code> and <code>pandas.Series</code>
+<p><code>Table</code> can also be constructed from <code>pandas.DataFrame</code> and <code>pandas.Series</code>
 objects. Because Perspective is designed for applying its own transformations on
 top of a flat dataset, dataframes that are passed in will be flattened and have
 its <code>index</code> treated as another column (through the
 <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.reset_index.html"><code>reset_index()</code></a>
-method). If the dataframe does not have an index set, an integer-typed column
+method).</p>
+<p>If the dataframe does not have an index set, an integer-typed column
 named <code>&quot;index&quot;</code> is created. If you want to preserve the indexing behavior of the
 dataframe passed into Perspective, simply create the <code>Table</code> with
 <code>index=&quot;index&quot;</code> as a keyword argument. This tells Perspective to once again
@@ -150,6 +155,7 @@ creation.</p>
 <li><code>datetime.date</code></li>
 <li><code>datetime.datetime</code></li>
 <li><code>str</code> (and <code>unicode</code> in Python 2)</li>
+<li><code>object</code></li>
 </ul>
 <p>Once the <code>Table</code> has been created with a schema, however, Perspective will cast
 the data that it ingests to conform with the schema. This allows for a lot of
@@ -158,37 +164,68 @@ with <code>date</code> objects, <code>datetime</code> objects, <code>pandas.Time
 and even valid millisecond/seconds from epoch timestamps. Similarly, updating
 string columns with integer data will cause a cast to string, updating floats
 with ints cause a float cast, and etc.</p>
-<p>Type inferrence works similarly—a column that contains <code>pandas.Timestamp</code>
+<p>Type inference works similarly—a column that contains <code>pandas.Timestamp</code>
 objects will have its type inferred as <code>datetime</code>, which allows it to be updated
 with any of the datetime types that were just mentioned. Thus, Perspective is
 aware of the basic type primitives that it supports, but agnostic towards the
 actual Python <code>type</code> of the data that it receives.</p>
+<p>Type inference can also leverage python converters, e.g. <code>__int__</code>, <code>__float__</code>, etc.</p>
+<h4><a class="anchor" aria-hidden="true" id="loading-custom-objects"></a><a href="#loading-custom-objects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Loading Custom Objects</h4>
+<p>Custom objects can also be loaded into Perspective by using <code>object</code> in the schema, or
+implementing <code>_psp_repr_</code> to return <code>object</code>. Perspective stores a reference
+to your object as an unsigned 64-bit integer (e.g. a pointer), and uses  <code>__repr__</code>
+(or <code>_psp_repr</code> if implemented) to represent the object.</p>
+<p>You can customize how perspective extracts data from your objects by implementing these
+two methods into your object:</p>
+<ul>
+<li><code>_psp_repr_</code>: Since <code>__repr__</code> can only return strings, this lets you return other values</li>
+<li><code>_psp_dtype_</code>: perpspective will look at this to determine how to cast your objects' repr.</li>
+</ul>
 <h4><a class="anchor" aria-hidden="true" id="time-zone-handling"></a><a href="#time-zone-handling" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Time Zone Handling</h4>
-<p>When passing in <code>datetime</code> objects, Perspective checks the <code>tzinfo</code> attribute
-to see if a time zone is set. Objects with an unset <code>tzinfo</code> attribute are
-treated as local time, and do not undergo any time zone conversion. Objects with
-the <code>tzinfo</code> attribute set will be <em>converted into UTC</em> before being stored in
-Perspective, and they will be <em>serialized as local time</em>.</p>
-<p><code>pandas.Timestamp</code> objects stored in a <code>pandas.DataFrame</code> are <em>always</em> treated
-as UTC times, and will be converted to local time when serialized to the user.
-To treat a <code>Timestamp</code> in a <code>DataFrame</code> as local time, use <code>tz_localize</code> or
-<code>tz_convert</code> to provide the <code>Timestamp</code> with a time zone.</p>
-<p>For more details, see this in-depth <a href="https://github.com/finos/perspective/pull/867">explanation</a>
-of Perspective's semantics around time zone handling.</p>
+<ul>
+<li><a href="https://docs.python.org/3/library/datetime.html#aware-and-naive-objects">&quot;Naive&quot;</a>
+datetimes are assumed to be local time.</li>
+<li><a href="https://docs.python.org/3/library/datetime.html#aware-and-naive-objects">&quot;Aware&quot;</a>
+datetimes use the timezone specified in the <code>tzinfo</code>.</li>
+</ul>
+<p>All <code>datetime</code> columns (regardless of input timezone) are output to the user as
+<code>datetime.datetime</code> objects in <em>local time</em> according to the Python runtime.</p>
+<p>This behavior is consistent with Perspective's behavior in Javascript. For more
+details, see this in-depth <a href="https://github.com/finos/perspective/pull/867">explanation</a>
+of <code>perspective-python</code> semantics around time zone handling.</p>
+<h5><a class="anchor" aria-hidden="true" id="pandas-timestamps"></a><a href="#pandas-timestamps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pandas Timestamps</h5>
+<ul>
+<li>Naive <code>pandas.Timestamp</code> objects are <em>always</em> treated as UTC times, and will
+be converted to local time when output to the user.</li>
+<li>Aware <code>pandas.Timestamp</code> objects use the timezone specified in <code>tzinfo</code>. Use
+<code>tz_localize</code> or <code>tz_convert</code> to provide the <code>Timestamp</code> with a time zone.</li>
+</ul>
 <h3><a class="anchor" aria-hidden="true" id="callbacks-and-events"></a><a href="#callbacks-and-events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Callbacks and Events</h3>
 <p><code>perspective.Table</code> allows for <code>on_update</code> and <code>on_delete</code> callbacks to be
 set—simply call <code>on_update</code> or <code>on_delete</code> with a reference to a function or a
 lambda without any parameters:</p>
-<pre><code class="hljs css language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">callback</span><span class="hljs-params">()</span>:</span>
+<pre><code class="hljs css language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_callback</span><span class="hljs-params">()</span>:</span>
     print(<span class="hljs-string">"Updated!"</span>)
-view.on_update(callback)
-view.on_delete(<span class="hljs-keyword">lambda</span>: print(<span class="hljs-string">"Updated again!"</span>))
+
+<span class="hljs-comment"># set the update callback</span>
+view.on_update(update_callback)
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete_callback</span><span class="hljs-params">()</span>:</span>
+    print(<span class="hljs-string">"Deleted!"</span>)
+
+<span class="hljs-comment"># set the delete callback</span>
+view.on_delete(delete_callback)
+
+<span class="hljs-comment"># set a lambda as a callback</span>
+view.on_delete(<span class="hljs-keyword">lambda</span>: print(<span class="hljs-string">"Deleted x2!"</span>))
 </code></pre>
 <p>If the callback is a named reference to a function, it can be removed with
-<code>remove_update</code> or <code>remove_delete</code>. Callbacks defined with a lambda function
-cannot be removed, as lambda functions have no identifier.</p>
-<pre><code class="hljs css language-python">view.remove_update(callback)
+<code>remove_update</code> or <code>remove_delete</code>:</p>
+<pre><code class="hljs css language-python">view.remove_update(update_callback)
+view.remove_delete(delete_callback)
 </code></pre>
+<p>Callbacks defined with a lambda function cannot be removed, as lambda functions have no identifier.</p>
 <h2><a class="anchor" aria-hidden="true" id="perspectivemanager"></a><a href="#perspectivemanager" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>PerspectiveManager</code></h2>
 <p><code>PerspectiveManager</code> offers an interface for hosting multiple
 <code>perspective.Table</code> and <code>perspective.View</code> instances, extending their
@@ -200,12 +237,12 @@ using a websocket API.</p>
 <h3><a class="anchor" aria-hidden="true" id="hosting-table-and-view-instances"></a><a href="#hosting-table-and-view-instances" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hosting <code>Table</code> and <code>View</code> instances</h3>
 <p><code>PerspectiveManager</code> has the ability to &quot;host&quot; <code>perspective.Table</code> and
 <code>perspective.View</code> instances. Hosted tables/views can have their methods
-called from other sources than the user, i.e. by a <code>perspective-viewer</code> running
-in Javascript over the network, interfacing with <code>perspective-python</code> through
+called from other sources than the Python server, i.e. by a <code>perspective-viewer</code> running
+in a Javascript client over the network, interfacing with <code>perspective-python</code> through
 the websocket API.</p>
-<p>The user has full control of all hosted <code>Table</code> and <code>View</code> instances, and can
-call any API method on hosted instances. This makes it extremely easy to
-stream data to a hosted <code>Table</code> using <code>.update()</code>:</p>
+<p>The server has full control of all hosted <code>Table</code> and <code>View</code>
+instances, and can call any public API method on hosted instances. This makes
+it extremely easy to stream data to a hosted <code>Table</code> using <code>.update()</code>:</p>
 <pre><code class="hljs css language-python">manager = PerspectiveManager()
 table = Table(data)
 manager.host_table(<span class="hljs-string">"data_source"</span>, table)
@@ -213,6 +250,15 @@ manager.host_table(<span class="hljs-string">"data_source"</span>, table)
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>):
     <span class="hljs-comment"># updates continue to propagate automatically</span>
     table.update(new_data)
+</code></pre>
+<p>In situations where clients should only be able to view the table and
+not modify it through <code>update</code>, <code>delete</code>, etc., initialize the <code>PerspectiveManager</code>
+with <code>lock=True</code>, or call the <code>lock()</code> method on a manager instance:</p>
+<pre><code class="hljs css language-python"><span class="hljs-comment"># lock prevents clients from calling methods that may mutate the state</span>
+<span class="hljs-comment"># of the table.</span>
+manager = PerspectiveManager(lock=<span class="hljs-literal">True</span>)
+table = Table(data)
+manager.host_table(<span class="hljs-string">"data_source"</span>, table)
 </code></pre>
 <p>A <code>PerspectiveManager</code> instance can host as many <code>Table</code>s and <code>View</code>s as
 necessary, but each <code>Table</code> should only be hosted by <em>one</em> <code>PerspectiveManager</code>.</p>
@@ -271,22 +317,22 @@ bundler, and can be implemented in a single HTML file:</p>
 <pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">perspective-viewer</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"viewer"</span> <span class="hljs-attr">editable</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">perspective-viewer</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-    <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'WebComponentsReady'</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-comment">// Create a client that expects a Perspective server</span>
-        <span class="hljs-comment">// to accept connections at the specified URL.</span>
-        <span class="hljs-keyword">const</span> websocket = perspective.websocket(<span class="hljs-string">"ws://localhost:8888/websocket"</span>);
+  <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">"WebComponentsReady"</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// Create a client that expects a Perspective server</span>
+    <span class="hljs-comment">// to accept connections at the specified URL.</span>
+    <span class="hljs-keyword">const</span> websocket = perspective.websocket(<span class="hljs-string">"ws://localhost:8888/websocket"</span>);
 
-        <span class="hljs-comment">/* `table` is a proxy for the `Table` we created on the server.
+    <span class="hljs-comment">/* `table` is a proxy for the `Table` we created on the server.
 
         All operations that are possible through the Javascript API are possible
         on the Python API as well, thus calling `view()`, `schema()`, `update()`
         etc. on `const table` will pass those operations to the Python `Table`,
         execute the commands, and return the result back to Javascript.*/</span>
-        <span class="hljs-keyword">const</span> table = websocket.open_table(<span class="hljs-string">'data_source_one'</span>);
+    <span class="hljs-keyword">const</span> table = websocket.open_table(<span class="hljs-string">"data_source_one"</span>);
 
-        <span class="hljs-comment">// Load this in the `&lt;perspective-viewer&gt;`.</span>
-        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'viewer'</span>).load(table);
-    });
+    <span class="hljs-comment">// Load this in the `&lt;perspective-viewer&gt;`.</span>
+    <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"viewer"</span>).load(table);
+  });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="using-a-hosted-view-in-javascript"></a><a href="#using-a-hosted-view-in-javascript" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using a hosted <code>View</code> in Javascript</h3>
@@ -326,7 +372,7 @@ supported by <code>perspective.Table</code>.</p>
 <p>Additionally, when created with <code>client=true</code> as a keyword argument to
 <code>__init__</code>, it can be used without accessing the built C++ binary.</p>
 <p>Similar to the viewer API, <code>PerspectiveWidget</code> takes keyword arguments that
-transform the <code>View</code> under ownsership:</p>
+transform the <code>View</code> under ownership:</p>
 <ul>
 <li><code>plugin</code></li>
 <li><code>row_pivots</code></li>

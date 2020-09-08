@@ -68,7 +68,8 @@
 <li><a href="#module_perspective..view+get_config">.get_config()</a> ⇒ <code>[ 'Promise' ].&lt;object&gt;</code></li>
 <li><a href="#module_perspective..view+delete">.delete()</a></li>
 <li><a href="#module_perspective..view+schema">.schema()</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
-<li><a href="#module_perspective..view+column_paths">.column_paths()</a></li>
+<li><a href="#module_perspective..view+computed_schema">.computed_schema()</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
+<li><a href="#module_perspective..view+column_paths">.column_paths()</a> ⇒ <code>[ 'Array' ].&lt;String&gt;</code></li>
 <li><a href="#module_perspective..view+to_columns">.to_columns([options])</a> ⇒ <code>[ 'Promise' ].&lt;Array&gt;</code></li>
 <li><a href="#module_perspective..view+to_json">.to_json([options])</a> ⇒ <code>[ 'Promise' ].&lt;Array&gt;</code></li>
 <li><a href="#module_perspective..view+to_csv">.to_csv([options])</a> ⇒ <code>[ 'Promise' ].&lt;string&gt;</code></li>
@@ -93,16 +94,15 @@
 <li><a href="#module_perspective..table+on_delete">.on_delete(callback)</a></li>
 <li><a href="#module_perspective..table+remove_delete">.remove_delete(callback)</a></li>
 <li><a href="#module_perspective..table+size">.size()</a> ⇒ <code>[ 'Promise' ].&lt;number&gt;</code></li>
-<li><a href="#module_perspective..table+schema">.schema(computed)</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
-<li><a href="#module_perspective..table+computed_schema">.computed_schema()</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
+<li><a href="#module_perspective..table+schema">.schema()</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
+<li><a href="#module_perspective..table+computed_schema">.computed_schema(computed_columns)</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
 <li><a href="#module_perspective..table+is_valid_filter">.is_valid_filter([filter])</a></li>
 <li><a href="#module_perspective..table+view">.view([config])</a> ⇒ <code>view</code></li>
 <li><a href="#module_perspective..table+update">.update(data)</a></li>
 <li><a href="#module_perspective..table+remove">.remove(data)</a></li>
-<li><a href="#module_perspective..table+add_computed">.add_computed(computed)</a></li>
+<li><a href="#module_perspective..table+get_computed_functions">.get_computed_functions()</a></li>
 <li><a href="#module_perspective..table+columns">.columns(computed)</a> ⇒ <code>[ 'Promise' ].&lt;Array.&lt;string&gt;&gt;</code></li>
 </ul></li>
-<li><a href="#module_perspective..name_to_computation">~name_to_computation(name)</a></li>
 </ul></li>
 </ul>
 <hr>
@@ -116,7 +116,8 @@
 <li><a href="#module_perspective..view+get_config">.get_config()</a> ⇒ <code>[ 'Promise' ].&lt;object&gt;</code></li>
 <li><a href="#module_perspective..view+delete">.delete()</a></li>
 <li><a href="#module_perspective..view+schema">.schema()</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
-<li><a href="#module_perspective..view+column_paths">.column_paths()</a></li>
+<li><a href="#module_perspective..view+computed_schema">.computed_schema()</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
+<li><a href="#module_perspective..view+column_paths">.column_paths()</a> ⇒ <code>[ 'Array' ].&lt;String&gt;</code></li>
 <li><a href="#module_perspective..view+to_columns">.to_columns([options])</a> ⇒ <code>[ 'Promise' ].&lt;Array&gt;</code></li>
 <li><a href="#module_perspective..view+to_json">.to_json([options])</a> ⇒ <code>[ 'Promise' ].&lt;Array&gt;</code></li>
 <li><a href="#module_perspective..view+to_csv">.to_csv([options])</a> ⇒ <code>[ 'Promise' ].&lt;string&gt;</code></li>
@@ -169,23 +170,55 @@ method to reclaim these.</p>
 <hr>
 <p><a name="module_perspective..view+schema"></a></p>
 <h4><a class="anchor" aria-hidden="true" id="viewschema-⇒-code-x27promisex27-ltobjectgtcode"></a><a href="#viewschema-⇒-code-x27promisex27-ltobjectgtcode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>view.schema() ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></h4>
-<p>The schema of this <a href="#module_perspective..view">view</a>. A schema is an
-Object, the keys of which are the columns of this
+<p>The schema of this <a href="#module_perspective..view">view</a>.</p>
+<p>A schema is an Object, the keys of which are the columns of this
 <a href="#module_perspective..view">view</a>, and the values are their string type
 names. If this <a href="#module_perspective..view">view</a> is aggregated, theses will
 be the aggregated types; otherwise these types will be the same as the
-columns in the underlying <a href="#module_perspective..table">table</a></p>
+columns in the underlying <a href="#module_perspective..table">table</a>.</p>
 <p><strong>Kind</strong>: instance method of <a href="#module_perspective..view"><code>view</code></a>  <br>
 <strong>Returns</strong>: <code>[ 'Promise' ].&lt;Object&gt;</code> - A Promise of this
-<a href="#module_perspective..view">view</a>'s schema.</p>
+<a href="#module_perspective..view">view</a>'s schema.<br>
+<strong>Example</strong></p>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// Create a view</span>
+<span class="hljs-keyword">const</span> view = table.view({
+     <span class="hljs-attr">columns</span>: [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>]
+});
+<span class="hljs-keyword">const</span> schema = <span class="hljs-keyword">await</span> view.schema(); <span class="hljs-comment">// {a: "float", b: "string"}</span>
+</code></pre>
+<hr>
+<p><a name="module_perspective..view+computed_schema"></a></p>
+<h4><a class="anchor" aria-hidden="true" id="viewcomputed_schema-⇒-code-x27promisex27-ltobjectgtcode"></a><a href="#viewcomputed_schema-⇒-code-x27promisex27-ltobjectgtcode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>view.computed_schema() ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></h4>
+<p>The computed column schema of this <a href="#module_perspective..view">view</a>,
+containing only user-created computed columns.</p>
+<p>A schema is an Object, the keys of which are the columns of this
+<a href="#module_perspective..view">view</a>, and the values are their string type
+names. If this <a href="#module_perspective..view">view</a> is aggregated, these will
+be the aggregated types; otherwise these types will be the same as the
+columns in the underlying <a href="#module_perspective..table">table</a>.</p>
+<p><strong>Kind</strong>: instance method of <a href="#module_perspective..view"><code>view</code></a>  <br>
+<strong>Returns</strong>: <code>[ 'Promise' ].&lt;Object&gt;</code> - A Promise of this
+<a href="#module_perspective..view">view</a>'s computed column schema.<br>
+<strong>Example</strong></p>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// Create a view with computed columns</span>
+<span class="hljs-keyword">const</span> view = table.view({
+     <span class="hljs-attr">computed_columns</span>: [{
+         <span class="hljs-attr">column</span>: <span class="hljs-string">"x + y"</span>,
+         <span class="hljs-attr">computed_function_name</span>: <span class="hljs-string">"+"</span>,
+         <span class="hljs-attr">inputs</span>: [<span class="hljs-string">"x"</span>, <span class="hljs-string">"y"</span>]
+     }]
+});
+<span class="hljs-keyword">const</span> computed_schema = <span class="hljs-keyword">await</span> view.computed_schema(); <span class="hljs-comment">// {x: "float"}</span>
+</code></pre>
 <hr>
 <p><a name="module_perspective..view+column_paths"></a></p>
-<h4><a class="anchor" aria-hidden="true" id="viewcolumn_paths"></a><a href="#viewcolumn_paths" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>view.column_paths()</h4>
+<h4><a class="anchor" aria-hidden="true" id="viewcolumn_paths-⇒-code-x27arrayx27-ltstringgtcode"></a><a href="#viewcolumn_paths-⇒-code-x27arrayx27-ltstringgtcode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>view.column_paths() ⇒ <code>[ 'Array' ].&lt;String&gt;</code></h4>
 <p>Returns an array of strings containing the column paths of the View
 without any of the source columns.</p>
 <p>A column path shows the columns that a given cell belongs to after pivots
 are applied.</p>
-<p><strong>Kind</strong>: instance method of <a href="#module_perspective..view"><code>view</code></a></p>
+<p><strong>Kind</strong>: instance method of <a href="#module_perspective..view"><code>view</code></a>  <br>
+<strong>Returns</strong>: <code>[ 'Array' ].&lt;String&gt;</code> - an Array of Strings containing the column paths.</p>
 <hr>
 <p><a name="module_perspective..view+to_columns"></a></p>
 <h4><a class="anchor" aria-hidden="true" id="viewto_columnsoptions-⇒-code-x27promisex27-ltarraygtcode"></a><a href="#viewto_columnsoptions-⇒-code-x27promisex27-ltarraygtcode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>view.to_columns([options]) ⇒ <code>[ 'Promise' ].&lt;Array&gt;</code></h4>
@@ -361,21 +394,33 @@ by the &quot;column_pivots&quot; configuration parameter supplied to this
 <hr>
 <p><a name="module_perspective..view+on_update"></a></p>
 <h4><a class="anchor" aria-hidden="true" id="viewon_updatecallback"></a><a href="#viewon_updatecallback" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>view.on_update(callback)</h4>
-<p>Register a callback with this <a href="#module_perspective..view">view</a>.  Whenever
+<p>Register a callback with this <a href="#module_perspective..view">view</a>. Whenever
 the <a href="#module_perspective..view">view</a>'s underlying table emits an update,
-this callback will be invoked with the aggregated row deltas.</p>
+this callback will be invoked with an object containing <code>port_id</code>,
+indicating which port the update fired on, and optionally <code>delta</code>, which
+is the new data that was updated for each cell or each row.</p>
 <p><strong>Kind</strong>: instance method of <a href="#module_perspective..view"><code>view</code></a>  <br>
 <strong>Params</strong></p>
 <ul>
-<li>callback <code>function</code> - A callback function invoked on update.  The
-parameter to this callback is dependent on the <code>mode</code> parameter:
+<li>callback <code>function</code> - A callback function invoked on update, which
+receives an object with two keys: <code>port_id</code>, indicating which port the
+update was triggered on, and <code>delta</code>, whose value is dependent on the
+<code>mode</code> parameter:
 <ul>
-<li>&quot;none&quot; (default): The callback is invoked without an argument.</li>
-<li>&quot;cell&quot;: The callback is invoked with the new data for each updated
-cell, serialized to JSON format.</li>
-<li>&quot;row&quot;: The callback is invoked with an Arrow of the updated rows.</li>
+<li>&quot;none&quot; (default): <code>delta</code> is <code>undefined</code>.</li>
+<li>&quot;cell&quot;: <code>delta</code> is the new data for each updated cell, serialized
+to JSON format.</li>
+<li>&quot;row&quot;: <code>delta</code> is an Arrow of the updated rows.</li>
 </ul></li>
 </ul>
+<p><strong>Example</strong></p>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// Attach an `on_update` callback</span>
+view.on_update(<span class="hljs-function"><span class="hljs-params">updated</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(updated.port_id));
+</code></pre>
+<p><strong>Example</strong></p>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// `on_update` with row deltas</span>
+view.on_update(<span class="hljs-function"><span class="hljs-params">updated</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(updated.delta), {<span class="hljs-attr">mode</span>: <span class="hljs-string">"row"</span>});
+</code></pre>
 <hr>
 <p><a name="module_perspective..view+on_delete"></a></p>
 <h4><a class="anchor" aria-hidden="true" id="viewon_deletecallback"></a><a href="#viewon_deletecallback" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>view.on_delete(callback)</h4>
@@ -387,6 +432,10 @@ invoked.</p>
 <ul>
 <li>callback <code>function</code> - A callback function invoked on delete.</li>
 </ul>
+<p><strong>Example</strong></p>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// attach an `on_delete` callback</span>
+view.on_delete(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Deleted!"</span>));
+</code></pre>
 <hr>
 <p><a name="module_perspective..view+remove_delete"></a></p>
 <h4><a class="anchor" aria-hidden="true" id="viewremove_deletecallback"></a><a href="#viewremove_deletecallback" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>view.remove_delete(callback)</h4>
@@ -397,6 +446,11 @@ invoked.</p>
 <ul>
 <li>callback <code>function</code> - A delete callback function to be removed</li>
 </ul>
+<p><strong>Example</strong></p>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// remove an `on_delete` callback</span>
+<span class="hljs-keyword">const</span> callback = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Deleted!"</span>)
+view.remove_delete(callback);
+</code></pre>
 <hr>
 <p><a name="module_perspective..table"></a></p>
 <h3><a class="anchor" aria-hidden="true" id="perspectivetable"></a><a href="#perspectivetable" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>perspective~table</h3>
@@ -411,13 +465,13 @@ invoked.</p>
 <li><a href="#module_perspective..table+on_delete">.on_delete(callback)</a></li>
 <li><a href="#module_perspective..table+remove_delete">.remove_delete(callback)</a></li>
 <li><a href="#module_perspective..table+size">.size()</a> ⇒ <code>[ 'Promise' ].&lt;number&gt;</code></li>
-<li><a href="#module_perspective..table+schema">.schema(computed)</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
-<li><a href="#module_perspective..table+computed_schema">.computed_schema()</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
+<li><a href="#module_perspective..table+schema">.schema()</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
+<li><a href="#module_perspective..table+computed_schema">.computed_schema(computed_columns)</a> ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></li>
 <li><a href="#module_perspective..table+is_valid_filter">.is_valid_filter([filter])</a></li>
 <li><a href="#module_perspective..table+view">.view([config])</a> ⇒ <code>view</code></li>
 <li><a href="#module_perspective..table+update">.update(data)</a></li>
 <li><a href="#module_perspective..table+remove">.remove(data)</a></li>
-<li><a href="#module_perspective..table+add_computed">.add_computed(computed)</a></li>
+<li><a href="#module_perspective..table+get_computed_functions">.get_computed_functions()</a></li>
 <li><a href="#module_perspective..table+columns">.columns(computed)</a> ⇒ <code>[ 'Promise' ].&lt;Array.&lt;string&gt;&gt;</code></li>
 </ul></li>
 </ul>
@@ -484,29 +538,28 @@ overwritten when they share an idnex column.</p>
 <strong>Returns</strong>: <code>[ 'Promise' ].&lt;number&gt;</code> - The number of accumulated rows.</p>
 <hr>
 <p><a name="module_perspective..table+schema"></a></p>
-<h4><a class="anchor" aria-hidden="true" id="tableschemacomputed-⇒-code-x27promisex27-ltobjectgtcode"></a><a href="#tableschemacomputed-⇒-code-x27promisex27-ltobjectgtcode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>table.schema(computed) ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></h4>
+<h4><a class="anchor" aria-hidden="true" id="tableschema-⇒-code-x27promisex27-ltobjectgtcode"></a><a href="#tableschema-⇒-code-x27promisex27-ltobjectgtcode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>table.schema() ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></h4>
 <p>The schema of this <a href="#module_perspective..table">table</a>.  A schema is an
 Object whose keys are the columns of this
 <a href="#module_perspective..table">table</a>, and whose values are their string type
 names.</p>
 <p><strong>Kind</strong>: instance method of <a href="#module_perspective..table"><code>table</code></a>  <br>
 <strong>Returns</strong>: <code>[ 'Promise' ].&lt;Object&gt;</code> - A Promise of this
-<a href="#module_perspective..table">table</a>'s schema.<br>
-<strong>Params</strong></p>
-<ul>
-<li>computed <code>boolean</code> - Should computed columns be included? (default
-false)</li>
-</ul>
+<a href="#module_perspective..table">table</a>'s schema.</p>
 <hr>
 <p><a name="module_perspective..table+computed_schema"></a></p>
-<h4><a class="anchor" aria-hidden="true" id="tablecomputed_schema-⇒-code-x27promisex27-ltobjectgtcode"></a><a href="#tablecomputed_schema-⇒-code-x27promisex27-ltobjectgtcode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>table.computed_schema() ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></h4>
-<p>The computed schema of this <a href="#module_perspective..table">table</a>. Returns a
-schema of only computed columns added by the user, the keys of which are
-computed columns and the values an Object containing the associated
-column_name, column_type, and computation.</p>
+<h4><a class="anchor" aria-hidden="true" id="tablecomputed_schemacomputed_columns-⇒-code-x27promisex27-ltobjectgtcode"></a><a href="#tablecomputed_schemacomputed_columns-⇒-code-x27promisex27-ltobjectgtcode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>table.computed_schema(computed_columns) ⇒ <code>[ 'Promise' ].&lt;Object&gt;</code></h4>
+<p>Given an array of computed column definitions, perform type lookups to
+create a schema for the computed column without calculating or
+constructing any new columns.</p>
 <p><strong>Kind</strong>: instance method of <a href="#module_perspective..table"><code>table</code></a>  <br>
-<strong>Returns</strong>: <code>[ 'Promise' ].&lt;Object&gt;</code> - A Promise of this
-<a href="#module_perspective..table">table</a>'s computed schema.</p>
+<strong>Returns</strong>: <code>[ 'Promise' ].&lt;Object&gt;</code> - A Promise that resolves to a computed schema
+based on the computed column definitions provided.<br>
+<strong>Params</strong></p>
+<ul>
+<li>computed_columns <code>[ 'Array' ].&lt;Object&gt;</code> - an array of computed column
+definitions.</li>
+</ul>
 <hr>
 <p><a name="module_perspective..table+is_valid_filter"></a></p>
 <h4><a class="anchor" aria-hidden="true" id="tableis_valid_filterfilter"></a><a href="#tableis_valid_filterfilter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>table.is_valid_filter([filter])</h4>
@@ -588,15 +641,24 @@ pushed down to any derived <a href="#module_perspective..view">view</a> objects.
 <li>data <code>[ 'Array' ].&lt;Object&gt;</code> - An array of primary keys to remove.</li>
 </ul>
 <hr>
-<p><a name="module_perspective..table+add_computed"></a></p>
-<h4><a class="anchor" aria-hidden="true" id="tableadd_computedcomputed"></a><a href="#tableadd_computedcomputed" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>table.add_computed(computed)</h4>
-<p>Create a new table with the addition of new computed columns (defined as
-javascript functions)</p>
-<p><strong>Kind</strong>: instance method of <a href="#module_perspective..table"><code>table</code></a>  <br>
-<strong>Params</strong></p>
+<p><a name="module_perspective..table+get_computed_functions"></a></p>
+<h4><a class="anchor" aria-hidden="true" id="tableget_computed_functions"></a><a href="#tableget_computed_functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>table.get_computed_functions()</h4>
+<p>Return an Object containing computed function metadata. Keys are strings,
+and each value is an Object containing the following metadata:</p>
 <ul>
-<li>computed <code>Computation</code> - A computation specification object</li>
+<li>name</li>
+<li>label</li>
+<li>pattern</li>
+<li>computed_function_name: the name of the computed function</li>
+<li>input_type: the type of its input columns (all input columns are of
+the same type)</li>
+<li>return_type: the return type of its output column</li>
+<li>group: a category for the function</li>
+<li>num_params: the number of input parameters</li>
+<li>format_function: an anonymous function used for naming new columns</li>
+<li>help: a help string that can be displayed in the UI.</li>
 </ul>
+<p><strong>Kind</strong>: instance method of <a href="#module_perspective..table"><code>table</code></a></p>
 <hr>
 <p><a name="module_perspective..table+columns"></a></p>
 <h4><a class="anchor" aria-hidden="true" id="tablecolumnscomputed-⇒-code-x27promisex27-ltarrayltstringgtgtcode"></a><a href="#tablecolumnscomputed-⇒-code-x27promisex27-ltarrayltstringgtgtcode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>table.columns(computed) ⇒ <code>[ 'Promise' ].&lt;Array.&lt;string&gt;&gt;</code></h4>
@@ -610,14 +672,4 @@ table.<br>
 false)</li>
 </ul>
 <hr>
-<p><a name="module_perspective..name_to_computation"></a></p>
-<h3><a class="anchor" aria-hidden="true" id="perspectivename_to_computationname"></a><a href="#perspectivename_to_computationname" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>perspective~name_to_computation(name)</h3>
-<p>Map a string name of a computation function to a value in the
-<code>t_computed_function_name</code> enum.</p>
-<p><strong>Kind</strong>: inner method of <a href="#module_perspective"><code>perspective</code></a>  <br>
-<strong>Params</strong></p>
-<ul>
-<li>name <code>String</code> - The name of a computation function.</li>
-</ul>
-<hr>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/md/development.html"><span class="arrow-prev">← </span><span>Developer Guide</span></a><a class="docs-next button" href="/docs/obj/perspective-viewer.html"><span>perspective-viewer API</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#perspective">perspective</a><ul class="toc-headings"><li><a href="#perspectiveview">perspective~view</a></li><li><a href="#perspectivetable">perspective~table</a></li><li><a href="#perspectivename_to_computationname">perspective~name_to_computation(name)</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/md/installation.html">Installation</a><a href="/docs/md/js.html">Javascript User Guide</a><a href="/docs/md/python.html">Python User Guide</a><a href="/docs/obj/perspective.html">Perspective API</a><a href="/docs/obj/perspective-viewer.html">Perspective Viewer API</a><a href="/docs/obj/perspective-python-table.html">Perspective Python API</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/finos/perspective/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Perspective Authors</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/md/development.html"><span class="arrow-prev">← </span><span>Developer Guide</span></a><a class="docs-next button" href="/docs/obj/perspective-viewer.html"><span>perspective-viewer API</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#perspective">perspective</a><ul class="toc-headings"><li><a href="#perspectiveview">perspective~view</a></li><li><a href="#perspectivetable">perspective~table</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/md/installation.html">Installation</a><a href="/docs/md/js.html">Javascript User Guide</a><a href="/docs/md/python.html">Python User Guide</a><a href="/docs/obj/perspective.html">Perspective API</a><a href="/docs/obj/perspective-viewer.html">Perspective Viewer API</a><a href="/docs/obj/perspective-python-table.html">Perspective Python API</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/finos/perspective/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Perspective Authors</section></footer></div></body></html>

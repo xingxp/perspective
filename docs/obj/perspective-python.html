@@ -82,6 +82,11 @@ same time as <code>index</code>. Updates past the limit will begin
 writing at row 0.</p></li>
 </ul></li>
 </ul>
+<h3><a class="anchor" aria-hidden="true" id="make_port"></a><a href="#make_port" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>make_port()</h3>
+<p>Create a new input port on the underlying gnode, and return an
+<code>int</code> containing the ID of the new input port.</p>
+<h3><a class="anchor" aria-hidden="true" id="remove_portport_id"></a><a href="#remove_portport_id" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>remove_port(port_id)</h3>
+<p>Remove the specified port from the underlying gnode.</p>
 <h3><a class="anchor" aria-hidden="true" id="compute"></a><a href="#compute" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>compute()</h3>
 <p>Returns whether the computed column feature is enabled.</p>
 <h3><a class="anchor" aria-hidden="true" id="clear"></a><a href="#clear" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>clear()</h3>
@@ -95,6 +100,31 @@ data that conforms to the <code>Table</code> schema.</p>
 <li><p><strong>Parameters</strong></p>
 <p><strong>data</strong> (<code>dict</code>/<code>list</code>/<code>pandas.DataFrame</code>) – New data
 that will be filled into the <code>Table</code>.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get_computed_functions"></a><a href="#get_computed_functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_computed_functions()</h3>
+<p>Returns a dict of computed function metadata, where each value is a
+dict that contains the following metadata:</p>
+<ul>
+<li>name</li>
+</ul>
+<ul>
+<li>label</li>
+</ul>
+<ul>
+<li>pattern</li>
+</ul>
+<ul>
+<li>computed_function_name: the name of the computed function</li>
+</ul>
+<ul>
+<li>input_type: the data type of input columns (“float”/”integer” and</li>
+</ul>
+<p>“date”/”datetime” are interchangable)</p>
+<ul>
+<li>return_type: the return type of its output column</li>
+<li>group: a category for the function</li>
+<li>num_params: the number of input parameters</li>
+<li>format_function: an anonymous function used for naming new columns</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="size"></a><a href="#size" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>size()</h3>
 <p>Returns the row count of the <code>Table</code>.</p>
@@ -114,6 +144,35 @@ representations, if True</p></li>
 <li><p><strong>Return type</strong></p>
 <p><code>dict</code></p></li>
 </ul>
+<h3><a class="anchor" aria-hidden="true" id="computed_schemacomputed_columnsnone-kwargs"></a><a href="#computed_schemacomputed_columnsnone-kwargs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>computed_schema(computed_columns=None, **kwargs)</h3>
+<p>Returns a schema containing the column names and data types of
+the <code>computed_columns</code> argument.</p>
+<p>If any column has invalid input columns or invalid types, they
+will not be included in the output schema and a warning will be
+logged.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>computed_columns</strong> (<code>list</code>) – A list of computed column
+definitions to create a schema from.</p></li>
+</ul>
+<ul>
+<li><p><strong>Keyword Arguments</strong></p>
+<p><strong>as_string</strong> (<code>bool</code>) – returns the data types as string
+representations, if True</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="get_computation_input_typescomputed_function_namenone-kwargs"></a><a href="#get_computation_input_typescomputed_function_namenone-kwargs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_computation_input_types(computed_function_name=None, **kwargs)</h3>
+<p>Returns a list of accepted input types for the provided
+<code>computed_function_name</code>.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>computed_function_name</strong> (<code>str</code>) – A <code>str</code> computed function
+name for which valid input types must be returned.</p></li>
+</ul>
+<ul>
+<li><p><strong>Keyword Arguments</strong></p>
+<p><strong>as_string</strong> (<code>bool</code>) – returns the data types as string
+representations, if True.</p></li>
+</ul>
 <h3><a class="anchor" aria-hidden="true" id="columnscomputedfalse"></a><a href="#columnscomputedfalse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>columns(computed=False)</h3>
 <p>Returns the column names of this <code>Table</code>.</p>
 <ul>
@@ -128,18 +187,6 @@ array. Defaults to False.</p></li>
 <ul>
 <li><p><strong>Return type</strong></p>
 <p><code>list</code></p></li>
-</ul>
-<h3><a class="anchor" aria-hidden="true" id="computed_schema"></a><a href="#computed_schema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>computed_schema()</h3>
-<p>Returns a schema of computed columns added by the user.</p>
-<ul>
-<li><p><strong>Returns</strong></p>
-<p>a key-value mapping of column names to computed</p>
-<p>columns. Each value is a dictionary that contains
-<code>column_name</code>, <code>column_type</code>, and <code>computation</code>.</p></li>
-</ul>
-<ul>
-<li><p><strong>Return type</strong></p>
-<p><code>dict</code></p></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="is_valid_filterfilter"></a><a href="#is_valid_filterfilter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>is_valid_filter(filter)</h3>
 <p>Tests whether a given filter expression string is valid, e.g. that
@@ -157,7 +204,7 @@ not null operators don’t need a comparison value.</p>
 <li><p><strong>Return type</strong></p>
 <p><code>bool</code></p></li>
 </ul>
-<h3><a class="anchor" aria-hidden="true" id="updatedata"></a><a href="#updatedata" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>update(data)</h3>
+<h3><a class="anchor" aria-hidden="true" id="updatedata-port_id0"></a><a href="#updatedata-port_id0" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>update(data, port_id=0)</h3>
 <p>Update the <code>Table</code> with new data.</p>
 <p>Updates on <code>Table</code> without an explicit <code>index</code>
 are treated as appends.  Updates on <code>Table</code> with
@@ -176,7 +223,7 @@ with which to update the <code>Table</code>.</p></li>
 <span class="hljs-meta">&gt;&gt;&gt; </span>tbl.view().to_dict()
 {<span class="hljs-string">"a"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-string">"b"</span>: [<span class="hljs-string">"a"</span>, <span class="hljs-string">"a"</span>, <span class="hljs-string">"a"</span>]}
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="removepkeys"></a><a href="#removepkeys" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>remove(pkeys)</h3>
+<h3><a class="anchor" aria-hidden="true" id="removepkeys-port_id0"></a><a href="#removepkeys-port_id0" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>remove(pkeys, port_id=0)</h3>
 <p>Removes the rows with the primary keys specified in <code>pkeys</code>.</p>
 <p>If the <code>Table</code> does not have an index, <code>remove()</code>
 has no effect.  Removes propagate to views derived from the table.</p>
@@ -191,7 +238,7 @@ that should be removed.</p></li>
 <span class="hljs-meta">&gt;&gt;&gt; </span>tbl.view().to_records()
 [{<span class="hljs-string">"a"</span>: <span class="hljs-number">1</span>}]
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="viewcolumnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filternone"></a><a href="#viewcolumnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filternone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>view(columns=None, row_pivots=None, column_pivots=None, aggregates=None, sort=None, filter=None)</h3>
+<h3><a class="anchor" aria-hidden="true" id="viewcolumnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filternone-computed_columnsnone"></a><a href="#viewcolumnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filternone-computed_columnsnone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>view(columns=None, row_pivots=None, column_pivots=None, aggregates=None, sort=None, filter=None, computed_columns=None)</h3>
 <p>Create a new <code>View</code> from this
 <code>Table</code> via the supplied keyword arguments.</p>
 <p>A View is an immutable set of transformations applied to the data stored
@@ -388,30 +435,33 @@ representations, if <code>True</code>.</p></li>
 <li><p><strong>Return type</strong></p>
 <p><code>dict</code></p></li>
 </ul>
+<h3><a class="anchor" aria-hidden="true" id="computed_schemaas_stringfalse"></a><a href="#computed_schemaas_stringfalse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>computed_schema(as_string=False)</h3>
 <h3><a class="anchor" aria-hidden="true" id="on_updatecallback-modenone"></a><a href="#on_updatecallback-modenone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>on_update(callback, mode=None)</h3>
 <p>Add a callback to be fired when <code>perspective.Table.update()</code> is
 called on the parent <code>Table</code>.</p>
 <p>Multiple callbacks can be set through calling <code>on_update</code> multiple
-times, and will be called in the order they are set.  Callback must be a
-callable function that takes exactly 0 or 1 parameter, depending on
-whether on_update is called with mode=”rows”. A RuntimeError will
-be thrown if the callback has mis-configured parameters.</p>
+times, and will be called in the order they are set. Callback must be a
+callable function that takes exactly 1 or 2 parameters, depending on
+whether on_update is called with mode=”row”. The first parameter is
+always port_id, an <code>int</code> that indicates which input port the
+update comes from. A RuntimeError will be thrown if the callback
+has mis-configured parameters.</p>
 <ul>
 <li><p><strong>Parameters</strong></p>
 <ul>
 <li><p><strong>callback</strong> (<code>callable</code>) – a callable function reference that will
 be called when <code>perspective.Table.update()</code> is called.</p></li>
-<li><p><strong>mode</strong> (<code>str</code>) – if set to “rows”, the callback will be passed
+<li><p><strong>mode</strong> (<code>str</code>) – if set to “row”, the callback will be passed
 an Arrow-serialized dataset of the rows that were updated.
 Defaults to “none”.</p></li>
 </ul></li>
 </ul>
 <h5><a class="anchor" aria-hidden="true" id="examples-5"></a><a href="#examples-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h5>
-<pre><code class="hljs css language-python">&gt;&gt;&gt; def updater():
-...     print("Update fired!")
+<pre><code class="hljs css language-python">&gt;&gt;&gt; def updater(port_id):
+...     print("Update fired on port", port_id)
 &gt;&gt;&gt; view.on_update(updater)
 &gt;&gt;&gt; table.update({"a": [1]})'
-&gt;&gt;&gt; Update fired!
+&gt;&gt;&gt; Update fired on port 0
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="remove_updatecallback"></a><a href="#remove_updatecallback" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>remove_update(callback)</h3>
 <p>Given a callback function, remove it from the list of callbacks.</p>
@@ -758,13 +808,18 @@ and Table constructor if table_or_data is a dataset.</p></li>
 <span class="hljs-meta">... </span>    aggregates={<span class="hljs-string">"a"</span>: <span class="hljs-string">"avg"</span>},
 <span class="hljs-meta">... </span>    row_pivots=[<span class="hljs-string">"a"</span>],
 <span class="hljs-meta">... </span>    sort=[[<span class="hljs-string">"b"</span>, <span class="hljs-string">"desc"</span>]],
-<span class="hljs-meta">... </span>    filter=[[<span class="hljs-string">"a"</span>, <span class="hljs-string">"&gt;"</span>, <span class="hljs-number">1</span>]])
+<span class="hljs-meta">... </span>    filter=[[<span class="hljs-string">"a"</span>, <span class="hljs-string">"&gt;"</span>, <span class="hljs-number">1</span>]],
+<span class="hljs-meta">... </span>    computed_columns=[{
+<span class="hljs-meta">... </span>        <span class="hljs-string">"column"</span>: <span class="hljs-string">"sqrt(a)"</span>,
+<span class="hljs-meta">... </span>        <span class="hljs-string">"computed_function_name"</span>: <span class="hljs-string">"sqrt"</span>,
+<span class="hljs-meta">... </span>        <span class="hljs-string">"inputs"</span>: [<span class="hljs-string">"a"</span>]
+<span class="hljs-meta">... </span>    }])
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="loaddata-options"></a><a href="#loaddata-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>load(data, **options)</h3>
 <p>Load the widget with data. If running in client mode, this method
 serializes the data and calls the browser viewer’s load method.
 Otherwise, it calls Viewer.load() using super().</p>
-<h3><a class="anchor" aria-hidden="true" id="updatedata-1"></a><a href="#updatedata-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>update(data)</h3>
+<h3><a class="anchor" aria-hidden="true" id="updatedata"></a><a href="#updatedata" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>update(data)</h3>
 <p>Update the widget with new data. If running in client mode, this
 method serializes the data and calls the browser viewer’s update
 method. Otherwise, it calls Viewer.update() using super().</p>
@@ -784,11 +839,11 @@ calls delete on the underlying viewer.</p>
 <p><strong>delete_table</strong> (bool) – whether the underlying Table will be
 deleted. Defaults to True.</p></li>
 </ul>
-<h4><a class="anchor" aria-hidden="true" id="class-perspectiveviewerviewerperspectiveviewerpluginhypergrid-columnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filtersnone-plugin_confignone-darknone-editablefalse"></a><a href="#class-perspectiveviewerviewerperspectiveviewerpluginhypergrid-columnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filtersnone-plugin_confignone-darknone-editablefalse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class perspective.viewer.viewer.PerspectiveViewer(plugin='hypergrid', columns=None, row_pivots=None, column_pivots=None, aggregates=None, sort=None, filters=None, plugin_config=None, dark=None, editable=False)</h4>
+<h4><a class="anchor" aria-hidden="true" id="class-perspectiveviewerviewerperspectiveviewerplugindatagrid-columnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filtersnone-computed_columnsnone-plugin_confignone-darknone-editablefalse"></a><a href="#class-perspectiveviewerviewerperspectiveviewerplugindatagrid-columnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filtersnone-computed_columnsnone-plugin_confignone-darknone-editablefalse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class perspective.viewer.viewer.PerspectiveViewer(plugin='datagrid', columns=None, row_pivots=None, column_pivots=None, aggregates=None, sort=None, filters=None, computed_columns=None, plugin_config=None, dark=None, editable=False)</h4>
 <p>Bases: <code>perspective.viewer.viewer_traitlets.PerspectiveTraitlets</code>, <code>object</code></p>
 <p>PerspectiveViewer wraps the perspective.Table API and exposes an API
 around creating views, loading data, and updating data.</p>
-<h3><a class="anchor" aria-hidden="true" id="__init__pluginhypergrid-columnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filtersnone-plugin_confignone-darknone-editablefalse"></a><a href="#__init__pluginhypergrid-columnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filtersnone-plugin_confignone-darknone-editablefalse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>_<em>init</em>_(plugin='hypergrid', columns=None, row_pivots=None, column_pivots=None, aggregates=None, sort=None, filters=None, plugin_config=None, dark=None, editable=False)</h3>
+<h3><a class="anchor" aria-hidden="true" id="__init__plugindatagrid-columnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filtersnone-computed_columnsnone-plugin_confignone-darknone-editablefalse"></a><a href="#__init__plugindatagrid-columnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filtersnone-computed_columnsnone-plugin_confignone-darknone-editablefalse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>_<em>init</em>_(plugin='datagrid', columns=None, row_pivots=None, column_pivots=None, aggregates=None, sort=None, filters=None, computed_columns=None, plugin_config=None, dark=None, editable=False)</h3>
 <p>Initialize an instance of PerspectiveViewer with the given viewer
 configuration.  Do not pass a Table or data into the constructor -
 use the <code>load()</code> method to provide the viewer with data.</p>
@@ -811,10 +866,15 @@ each list containing a column name and a sort direction
 <li><p><strong>filter</strong> (<code>list</code> of <code>list</code> of <code>str</code>) – A list of lists,
 each list containing a column name, a filter comparator, and a
 value to filter by.</p></li>
-<li><p><strong>plugin</strong> (str/perspective.Plugin) – Which plugin to select by
+<li><p><strong>computed_columns</strong> (<code>list</code> of <code>dict</code>) – A list of dicts,
+each dict containing <code>column</code>, a new computed column name,
+<code>computed_function_name</code>, a string computed function name,
+and <code>inputs</code>, a list of input column names.</p></li>
+<li><p><strong>plugin</strong> (<code>str</code>/<code>perspective.Plugin</code>) – Which plugin to select by
 default.</p></li>
-<li><p><strong>plugin_config</strong> (dict) – Custom config for all plugins by name.</p></li>
-<li><p><strong>dark</strong> (bool) – Whether to invert the colors.</p></li>
+<li><p><strong>plugin_config</strong> (<code>dict</code>) – Custom config for all plugins by name.</p></li>
+<li><p><strong>editable</strong> (<code>bool</code>) – Whether to allow editability using the grid.</p></li>
+<li><p><strong>dark</strong> (<code>bool</code>) – Whether to invert the colors.</p></li>
 </ul></li>
 </ul>
 <h5><a class="anchor" aria-hidden="true" id="examples-12"></a><a href="#examples-12" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h5>
@@ -822,37 +882,42 @@ default.</p></li>
 <span class="hljs-meta">... </span>    aggregates={<span class="hljs-string">"a"</span>: <span class="hljs-string">"avg"</span>},
 <span class="hljs-meta">... </span>    row_pivots=[<span class="hljs-string">"a"</span>],
 <span class="hljs-meta">... </span>    sort=[[<span class="hljs-string">"b"</span>, <span class="hljs-string">"desc"</span>]],
-<span class="hljs-meta">... </span>    filter=[[<span class="hljs-string">"a"</span>, <span class="hljs-string">"&gt;"</span>, <span class="hljs-number">1</span>]]
+<span class="hljs-meta">... </span>    filter=[[<span class="hljs-string">"a"</span>, <span class="hljs-string">"&gt;"</span>, <span class="hljs-number">1</span>]],
+<span class="hljs-meta">... </span>    computed_columns=[{
+<span class="hljs-meta">... </span>        <span class="hljs-string">"column"</span>: <span class="hljs-string">"(Sales * Profit)"</span>,
+<span class="hljs-meta">... </span>        <span class="hljs-string">"computed_function_name"</span>: <span class="hljs-string">"*"</span>,
+<span class="hljs-meta">... </span>        <span class="hljs-string">"inputs"</span>: [<span class="hljs-string">"Sales"</span>, <span class="hljs-string">"Profit"</span>]
+<span class="hljs-meta">... </span>    }]
 <span class="hljs-meta">... </span>)
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="property-table"></a><a href="#property-table" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>property table()</h3>
-<p>Returns the perspective.Table under management by the viewer.</p>
+<p>Returns the <code>perspective.Table</code> under management by the viewer.</p>
 <h3><a class="anchor" aria-hidden="true" id="property-view"></a><a href="#property-view" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>property view()</h3>
-<p>Returns the perspective.View currently shown by the viewer.</p>
+<p>Returns the <code>perspective.View</code> currently shown by the viewer.</p>
 <p>This property changes every time the viewer configuration changes.</p>
 <h3><a class="anchor" aria-hidden="true" id="loadtable_or_data-options"></a><a href="#loadtable_or_data-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>load(table_or_data, **options)</h3>
-<p>Given a perspective.Table or data that can be handled by
-perspective.Table, pass it to the viewer.</p>
-<p>load() resets the state of the viewer.  If a perspective.Table
-is passed into table_or_data, **options is ignored as the options
-already set on the Table take precedence.  If data is passed in, a
-perspective.Table is automatically created by this function, and the
-options passed to **config are extended to the new Table.</p>
+<p>Given a <code>perspective.Table</code> or data that can be handled by
+<code>perspective.Table</code>, pass it to the viewer.</p>
+<p><code>load()</code> resets the state of the viewer.  If a <code>perspective.Table</code>
+is passed into <code>table_or_data</code>, <code>\*\*options</code> is ignored as the options
+already set on the <code>Table</code> take precedence.  If data is passed in, a
+<code>perspective.Table</code> is automatically created by this function, and the
+options passed to <code>\*\*config</code> are extended to the new Table.</p>
 <ul>
 <li><p><strong>Parameters</strong></p>
-<p><strong>table_or_data</strong> (Table`|`dict`|`list`|`pandas.DataFrame) – a
+<p><strong>table_or_data</strong> (<code>Table\</code>|:obj:`dict`|:obj:`list`|`pandas.DataFrame`) – a
 perspective.Table instance or a dataset to be displayed
 in the viewer.</p></li>
 </ul>
 <ul>
 <li><p><strong>Keyword Arguments</strong></p>
 <ul>
-<li><p><strong>name</strong> (str) – An optional name to reference the table by so it can
+<li><p><strong>name</strong> (<code>str</code>) – An optional name to reference the table by so it can
 be accessed from the front-end. If not provided, a name will
 be generated.</p></li>
-<li><p><strong>index</strong> (str) – A column name to be used as the primary key.
+<li><p><strong>index</strong> (<code>str</code>) – A column name to be used as the primary key.
 Ignored if a Table is supplied.</p></li>
-<li><p><strong>limit</strong> (int) – A upper limit on the number of rows in the Table.
+<li><p><strong>limit</strong> (<code>int</code>) – A upper limit on the number of rows in the Table.
 Cannot be set at the same time as index, ignored if a Table
 is passed in.</p></li>
 </ul></li>
@@ -865,22 +930,22 @@ is passed in.</p></li>
 <span class="hljs-meta">&gt;&gt;&gt; </span>viewer.load(tbl)
 <span class="hljs-meta">&gt;&gt;&gt; </span>viewer.load(data, index=<span class="hljs-string">"a"</span>) <span class="hljs-comment"># viewer state is reset</span>
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="updatedata-2"></a><a href="#updatedata-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>update(data)</h3>
+<h3><a class="anchor" aria-hidden="true" id="updatedata-1"></a><a href="#updatedata-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>update(data)</h3>
 <p>Update the table under management by the viewer with new data.
 This function follows the semantics of Table.update(), and will be
 affected by whether an index is set on the underlying table.</p>
 <ul>
 <li><p><strong>Parameters</strong></p>
-<p><strong>data</strong> (dict`|`list`|`pandas.DataFrame) – the update data for the
+<p><strong>data</strong> (<code>dict\</code>|:obj:`list`|:obj:`pandas.DataFrame`) – the update data for the
 table.</p></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="clear-2"></a><a href="#clear-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>clear()</h3>
-<p>Clears the rows of this viewer’s Table.</p>
+<p>Clears the rows of this viewer’s <code>Table</code>.</p>
 <h3><a class="anchor" aria-hidden="true" id="replacedata-2"></a><a href="#replacedata-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>replace(data)</h3>
 <p>Replaces the rows of this viewer’s Table with new data.</p>
 <ul>
 <li><p><strong>Parameters</strong></p>
-<p><strong>data</strong> (dict`|`list`|`pandas.DataFrame) – new data to set into the
+<p><strong>data</strong> (<code>dict\</code>|:obj:`list`|:obj:`pandas.DataFrame`) – new data to set into the
 table - must conform to the table’s schema.</p></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="save"></a><a href="#save" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>save()</h3>
@@ -894,33 +959,94 @@ a given viewer’s configuration can be reproduced</p>
 modify the underlying Table.</p>
 <h3><a class="anchor" aria-hidden="true" id="deletedelete_tabletrue-1"></a><a href="#deletedelete_tabletrue-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>delete(delete_table=True)</h3>
 <p>Delete the Viewer’s data and clears its internal state. If
-delete_table is True, the underlying perspective.Table and all
-associated</p>
-<pre><code class="hljs">`
-</code></pre>
-<p>View`s will be deleted.</p>
+<code>delete_table</code> is True, the underlying perspective.Table and all
+associated <code>View</code> objects will be deleted.</p>
 <ul>
 <li><p><strong>Parameters</strong></p>
-<p><strong>delete_table</strong> (<em>bool</em>) – whether the underlying Table will be
+<p><strong>delete_table</strong> (<code>bool</code>) – whether the underlying Table will be
 deleted. Defaults to True.</p></li>
 </ul>
+<h2><a class="anchor" aria-hidden="true" id="perspectivetornadohandler"></a><a href="#perspectivetornadohandler" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PerspectiveTornadoHandler</h2>
+<p><code>PerspectiveTornadoHandler</code> is a ready-made Perspective server that interfaces seamlessly with
+<code>@finos/perspective-viewer</code> in Javascript.</p>
+<h4><a class="anchor" aria-hidden="true" id="class-perspectivetornado_handlertornado_handlerperspectivetornadohandlerargs-kwargs"></a><a href="#class-perspectivetornado_handlertornado_handlerperspectivetornadohandlerargs-kwargs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class perspective.tornado_handler.tornado_handler.PerspectiveTornadoHandler(*args, **kwargs)</h4>
+<p>Bases: <code>tornado.websocket.WebSocketHandler</code></p>
+<p>PerspectiveTornadoHandler is a drop-in implementation of Perspective.</p>
+<p>Use it inside Tornado routing to create a server-side Perspective that is
+ready to receive websocket messages from the front-end perspective-viewer.
+Because Tornado implements an event loop, this handler links Perspective
+with IOLoop.current() in order to defer expensive operations until the
+next free iteration of the event loop.</p>
+<p>To keep the websocket connection alive, set your Tornado application’s
+<code>websocket_ping_interval</code> configuration variable.</p>
+<h5><a class="anchor" aria-hidden="true" id="examples-14"></a><a href="#examples-14" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h5>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>MANAGER = PerspectiveManager()
+<span class="hljs-meta">&gt;&gt;&gt; </span>MANAGER.host_table(<span class="hljs-string">"data_source_one"</span>, Table(
+<span class="hljs-meta">... </span>    pd.read_csv(<span class="hljs-string">"superstore.csv"</span>)))
+<span class="hljs-meta">&gt;&gt;&gt; </span>app = tornado.web.Application([
+<span class="hljs-meta">... </span>    (<span class="hljs-string">r"/"</span>, MainHandler),
+<span class="hljs-meta">... </span>    (<span class="hljs-string">r"/websocket"</span>, PerspectiveTornadoHandler, {
+<span class="hljs-meta">... </span>        <span class="hljs-string">"manager"</span>: MANAGER,
+<span class="hljs-meta">... </span>        <span class="hljs-string">"check_origin"</span>: <span class="hljs-literal">True</span>
+<span class="hljs-meta">... </span>    })
+<span class="hljs-meta">... </span>])
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="__init__args-kwargs"></a><a href="#__init__args-kwargs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>_<em>init</em>_(*args, **kwargs)</h3>
+<p>Create a new instance of the PerspectiveTornadoHandler with the
+given Manager instance.</p>
+<ul>
+<li><p><strong>Keyword Arguments</strong></p>
+<ul>
+<li><p><strong>(</strong> (<em>check_origin</em>) – obj`PerspectiveManager`): A PerspectiveManager instance.
+Must be provided on initialization.</p></li>
+<li><p><strong>(</strong> – obj`bool`): If True, all requests will be accepted
+regardless of origin. Defaults to False.</p></li>
+</ul></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="check_originorigin"></a><a href="#check_originorigin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>check_origin(origin)</h3>
+<p>Returns whether the handler allows requests from origins outside
+of the host URL.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>(</strong> (<em>origin</em>) – obj”bool): a boolean that indicates whether requests
+outside of the host URL should be accepted. If <code>True</code>, request
+URLs will not be validated and all requests will be allowed.
+Defaults to <code>False</code>.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="on_messagemessage"></a><a href="#on_messagemessage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>on_message(message)</h3>
+<p>When the websocket receives a message, send it to the <code>process</code>
+method of the PerspectiveManager with a reference to the <code>post</code>
+callback. Contains special logic to handle passing <code>ArrayBuffer</code>
+objects over the wire from JS to Python, and vice-versa.</p>
+<h3><a class="anchor" aria-hidden="true" id="postmessage-binaryfalse"></a><a href="#postmessage-binaryfalse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>post(message, binary=False)</h3>
+<p>When post is called by PerspectiveManager, serialize the data to
+JSON and send it to the client.</p>
+<ul>
+<li><p><strong>Parameters</strong></p>
+<p><strong>message</strong> (<code>str</code>) – a JSON-serialized string containing a message to the
+front-end perspective-viewer.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="on_close"></a><a href="#on_close" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>on_close()</h3>
+<p>Remove the views associated with the client when the websocket
+closes.</p>
 <h2><a class="anchor" aria-hidden="true" id="perspectivemanager"></a><a href="#perspectivemanager" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PerspectiveManager</h2>
 <p><code>PerspectiveManager</code> implements a communication protocol between Perspective runtimes in different languages.
 Through its <code>process()</code> method, it allows runtimes to communicate instructions and interoperate.</p>
 <h4><a class="anchor" aria-hidden="true" id="class-perspectivemanagermanagerperspectivemanagerlockfalse"></a><a href="#class-perspectivemanagermanagerperspectivemanagerlockfalse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class perspective.manager.manager.PerspectiveManager(lock=False)</h4>
-<p>Bases: <code>object</code></p>
+<p>Bases: <code>perspective.manager.manager_internal._PerspectiveManagerInternal</code></p>
 <p>PerspectiveManager is an orchestrator for running Perspective on the
 server side.</p>
 <p>The core functionality resides in process(), which receives
-JSON-serialized messages from a client (usually perspective-viewer in the
-browser), executes the commands in the message, and returns the results of
-those commands back to the post_callback.  The manager cannot create
-tables or views - use host_table or host_view to pass Table/View
-instances to the manager.  Because Perspective is designed to be used in a
+JSON-serialized messages from a client (implemented by perspective-viewer
+in the browser), executes the commands in the message, and returns the
+results of those commands back to the post_callback. Table/View instances
+should be passed to the manager using host_table or host_view - this
+allows server code to call Table/View APIs natively instead of proxying
+them through the Manager. Because Perspective is designed to be used in a
 shared context, i.e. multiple clients all accessing the same Table,
 PerspectiveManager comes with the context of sessions - an
 encapsulation of the actions and resources used by a single connection
-to Perspective.</p>
+to Perspective, which can be cleaned up after the connection is closed.</p>
 <ul>
 <li><p>When a client connects, for example through a websocket, a new session</p>
 <p>should be spawned using new_session().</p></li>
@@ -930,28 +1056,15 @@ to Perspective.</p>
 <p>clean up associated resources.</p></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="lock"></a><a href="#lock" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>lock()</h3>
-<p>Block messages that can mutate the state of</p>
-<pre><code class="hljs">`
+<p>Block messages that can mutate the state of <code>Table</code></p>
+<pre><code class="hljs">and `View` objects under management.
 </code></pre>
-<p>Table`s and</p>
-<pre><code class="hljs">`
-</code></pre>
-<p>View`s
-under management.</p>
-<p>All</p>
-<pre><code class="hljs">`
-</code></pre>
-<p>PerspectiveManager`s exposed over the internet should be locked to
-prevent content from being mutated by clients.</p>
+<p>All <code>PerspectiveManager</code> objects exposed over the internet should be
+locked to prevent content from being mutated by clients.</p>
 <h3><a class="anchor" aria-hidden="true" id="unlock"></a><a href="#unlock" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>unlock()</h3>
-<p>Unblock messages that can mutate the state of</p>
-<pre><code class="hljs">`
-</code></pre>
-<p>Table`s and</p>
-<pre><code class="hljs">`
-</code></pre>
-<p>View`s
-under management.</p>
+<p>Unblock messages that can mutate the state of
+<code>Table</code> and <code>View</code> objects under
+management.</p>
 <h3><a class="anchor" aria-hidden="true" id="hostitem-namenone"></a><a href="#hostitem-namenone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>host(item, name=None)</h3>
 <p>Given a <code>Table</code> or <code>View</code>,
 place it under management and allow operations on it to be passed
@@ -963,7 +1076,7 @@ through the Manager instance.</p>
 <ul>
 <li><p><strong>Keyword Arguments</strong></p>
 <p><strong>name</strong> (<code>str</code>) – an optional name to allow retrieval through
-get_table or get_view. A name will be generated if not
+<code>get_table</code> or <code>get_view</code>. A name will be generated if not
 provided.</p></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="host_tablename-table"></a><a href="#host_tablename-table" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>host_table(name, table)</h3>
@@ -971,7 +1084,8 @@ provided.</p></li>
 to occur through the Manager.</p>
 <p>If a function for queue_process is defined (i.e., by
 <code>PerspectiveTornadoHandler</code>), bind the function to
-Table and have it call the manager’s version of queue_process.</p>
+<code>Table</code> and have it call the manager’s version of
+queue_process.</p>
 <h3><a class="anchor" aria-hidden="true" id="host_viewname-view"></a><a href="#host_viewname-view" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>host_view(name, view)</h3>
 <p>Given a <code>View</code>, add it to the manager’s views
 container.</p>
@@ -979,10 +1093,6 @@ container.</p>
 <p>Return a table under management by name.</p>
 <h3><a class="anchor" aria-hidden="true" id="get_viewname"></a><a href="#get_viewname" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>get_view(name)</h3>
 <p>Return a view under management by name.</p>
-<h3><a class="anchor" aria-hidden="true" id="callbackargs-kwargs"></a><a href="#callbackargs-kwargs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>callback(*args, **kwargs)</h3>
-<p>Return a message to the client using the post_callback method.</p>
-<h3><a class="anchor" aria-hidden="true" id="clear_viewsclient_id"></a><a href="#clear_viewsclient_id" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>clear_views(client_id)</h3>
-<p>Garbage collect views that belong to closed connections.</p>
 <h4><a class="anchor" aria-hidden="true" id="perspectivemanagersessionrandom"></a><a href="#perspectivemanagersessionrandom" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>perspective.manager.session.random()</h4>
 <h4><a class="anchor" aria-hidden="true" id="class-perspectivemanagersessionperspectivesessionmanager"></a><a href="#class-perspectivemanagersessionperspectivesessionmanager" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>class perspective.manager.session.PerspectiveSession(manager)</h4>
 <p>Bases: <code>object</code></p>
@@ -1003,4 +1113,4 @@ necessarily involve calling delete() on associated views.</p>
 <h3><a class="anchor" aria-hidden="true" id="close"></a><a href="#close" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>close()</h3>
 <p>Remove the views and callbacks that were created within this session
 when the session ends.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/obj/perspective-viewer.html"><span class="arrow-prev">← </span><span>perspective-viewer API</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#table">Table</a><ul class="toc-headings"><li><a href="#__init__data-limitnone-indexnone">_<em>init</em>_(data, limit=None, index=None)</a></li><li><a href="#compute">compute()</a></li><li><a href="#clear">clear()</a></li><li><a href="#replacedata">replace(data)</a></li><li><a href="#size">size()</a></li><li><a href="#schemaas_stringfalse">schema(as_string=False)</a></li><li><a href="#columnscomputedfalse">columns(computed=False)</a></li><li><a href="#computed_schema">computed_schema()</a></li><li><a href="#is_valid_filterfilter">is_valid_filter(filter)</a></li><li><a href="#updatedata">update(data)</a></li><li><a href="#removepkeys">remove(pkeys)</a></li><li><a href="#viewcolumnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filternone">view(columns=None, row_pivots=None, column_pivots=None, aggregates=None, sort=None, filter=None)</a></li><li><a href="#on_deletecallback">on_delete(callback)</a></li><li><a href="#remove_deletecallback">remove_delete(callback)</a></li><li><a href="#delete">delete()</a></li></ul></li><li><a href="#view">View</a><ul class="toc-headings"><li><a href="#get_config">get_config()</a></li><li><a href="#sides">sides()</a></li><li><a href="#num_rows">num_rows()</a></li><li><a href="#num_columns">num_columns()</a></li><li><a href="#get_row_expandedidx">get_row_expanded(idx)</a></li><li><a href="#expandidx">expand(idx)</a></li><li><a href="#collapseidx">collapse(idx)</a></li><li><a href="#set_depthdepth">set_depth(depth)</a></li><li><a href="#column_paths">column_paths()</a></li><li><a href="#schemaas_stringfalse-1">schema(as_string=False)</a></li><li><a href="#on_updatecallback-modenone">on_update(callback, mode=None)</a></li><li><a href="#remove_updatecallback">remove_update(callback)</a></li><li><a href="#on_deletecallback-1">on_delete(callback)</a></li><li><a href="#delete-1">delete()</a></li><li><a href="#remove_deletecallback-1">remove_delete(callback)</a></li><li><a href="#to_recordskwargs">to_records(**kwargs)</a></li><li><a href="#to_dictoptions">to_dict(**options)</a></li><li><a href="#to_numpyoptions">to_numpy(**options)</a></li><li><a href="#to_dfoptions">to_df(**options)</a></li><li><a href="#to_csvoptions">to_csv(**options)</a></li><li><a href="#to_jsonkwargs">to_json(**kwargs)</a></li><li><a href="#to_columnsoptions">to_columns(**options)</a></li></ul></li><li><a href="#perspectivewidget">PerspectiveWidget</a><ul class="toc-headings"><li><a href="#__init__table_or_data-indexnone-limitnone-clientfalse-kwargs">_<em>init</em>_(table_or_data, index=None, limit=None, client=False, **kwargs)</a></li><li><a href="#loaddata-options">load(data, **options)</a></li><li><a href="#updatedata-1">update(data)</a></li><li><a href="#clear-1">clear()</a></li><li><a href="#replacedata-1">replace(data)</a></li><li><a href="#deletedelete_tabletrue">delete(delete_table=True)</a></li><li><a href="#__init__pluginhypergrid-columnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filtersnone-plugin_confignone-darknone-editablefalse">_<em>init</em>_(plugin='hypergrid', columns=None, row_pivots=None, column_pivots=None, aggregates=None, sort=None, filters=None, plugin_config=None, dark=None, editable=False)</a></li><li><a href="#property-table">property table()</a></li><li><a href="#property-view">property view()</a></li><li><a href="#loadtable_or_data-options">load(table_or_data, **options)</a></li><li><a href="#updatedata-2">update(data)</a></li><li><a href="#clear-2">clear()</a></li><li><a href="#replacedata-2">replace(data)</a></li><li><a href="#save">save()</a></li><li><a href="#restorekwargs">restore(**kwargs)</a></li><li><a href="#reset">reset()</a></li><li><a href="#deletedelete_tabletrue-1">delete(delete_table=True)</a></li></ul></li><li><a href="#perspectivemanager">PerspectiveManager</a><ul class="toc-headings"><li><a href="#lock">lock()</a></li><li><a href="#unlock">unlock()</a></li><li><a href="#hostitem-namenone">host(item, name=None)</a></li><li><a href="#host_tablename-table">host_table(name, table)</a></li><li><a href="#host_viewname-view">host_view(name, view)</a></li><li><a href="#get_tablename">get_table(name)</a></li><li><a href="#get_viewname">get_view(name)</a></li><li><a href="#callbackargs-kwargs">callback(*args, **kwargs)</a></li><li><a href="#clear_viewsclient_id">clear_views(client_id)</a></li><li><a href="#__init__manager">_<em>init</em>_(manager)</a></li><li><a href="#processmessage-post_callback">process(message, post_callback)</a></li><li><a href="#close">close()</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/md/installation.html">Installation</a><a href="/docs/md/js.html">Javascript User Guide</a><a href="/docs/md/python.html">Python User Guide</a><a href="/docs/obj/perspective.html">Perspective API</a><a href="/docs/obj/perspective-viewer.html">Perspective Viewer API</a><a href="/docs/obj/perspective-python-table.html">Perspective Python API</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/finos/perspective/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Perspective Authors</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/obj/perspective-viewer.html"><span class="arrow-prev">← </span><span>perspective-viewer API</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#table">Table</a><ul class="toc-headings"><li><a href="#__init__data-limitnone-indexnone">_<em>init</em>_(data, limit=None, index=None)</a></li><li><a href="#make_port">make_port()</a></li><li><a href="#remove_portport_id">remove_port(port_id)</a></li><li><a href="#compute">compute()</a></li><li><a href="#clear">clear()</a></li><li><a href="#replacedata">replace(data)</a></li><li><a href="#get_computed_functions">get_computed_functions()</a></li><li><a href="#size">size()</a></li><li><a href="#schemaas_stringfalse">schema(as_string=False)</a></li><li><a href="#computed_schemacomputed_columnsnone-kwargs">computed_schema(computed_columns=None, **kwargs)</a></li><li><a href="#get_computation_input_typescomputed_function_namenone-kwargs">get_computation_input_types(computed_function_name=None, **kwargs)</a></li><li><a href="#columnscomputedfalse">columns(computed=False)</a></li><li><a href="#is_valid_filterfilter">is_valid_filter(filter)</a></li><li><a href="#updatedata-port_id0">update(data, port_id=0)</a></li><li><a href="#removepkeys-port_id0">remove(pkeys, port_id=0)</a></li><li><a href="#viewcolumnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filternone-computed_columnsnone">view(columns=None, row_pivots=None, column_pivots=None, aggregates=None, sort=None, filter=None, computed_columns=None)</a></li><li><a href="#on_deletecallback">on_delete(callback)</a></li><li><a href="#remove_deletecallback">remove_delete(callback)</a></li><li><a href="#delete">delete()</a></li></ul></li><li><a href="#view">View</a><ul class="toc-headings"><li><a href="#get_config">get_config()</a></li><li><a href="#sides">sides()</a></li><li><a href="#num_rows">num_rows()</a></li><li><a href="#num_columns">num_columns()</a></li><li><a href="#get_row_expandedidx">get_row_expanded(idx)</a></li><li><a href="#expandidx">expand(idx)</a></li><li><a href="#collapseidx">collapse(idx)</a></li><li><a href="#set_depthdepth">set_depth(depth)</a></li><li><a href="#column_paths">column_paths()</a></li><li><a href="#schemaas_stringfalse-1">schema(as_string=False)</a></li><li><a href="#computed_schemaas_stringfalse">computed_schema(as_string=False)</a></li><li><a href="#on_updatecallback-modenone">on_update(callback, mode=None)</a></li><li><a href="#remove_updatecallback">remove_update(callback)</a></li><li><a href="#on_deletecallback-1">on_delete(callback)</a></li><li><a href="#delete-1">delete()</a></li><li><a href="#remove_deletecallback-1">remove_delete(callback)</a></li><li><a href="#to_recordskwargs">to_records(**kwargs)</a></li><li><a href="#to_dictoptions">to_dict(**options)</a></li><li><a href="#to_numpyoptions">to_numpy(**options)</a></li><li><a href="#to_dfoptions">to_df(**options)</a></li><li><a href="#to_csvoptions">to_csv(**options)</a></li><li><a href="#to_jsonkwargs">to_json(**kwargs)</a></li><li><a href="#to_columnsoptions">to_columns(**options)</a></li></ul></li><li><a href="#perspectivewidget">PerspectiveWidget</a><ul class="toc-headings"><li><a href="#__init__table_or_data-indexnone-limitnone-clientfalse-kwargs">_<em>init</em>_(table_or_data, index=None, limit=None, client=False, **kwargs)</a></li><li><a href="#loaddata-options">load(data, **options)</a></li><li><a href="#updatedata">update(data)</a></li><li><a href="#clear-1">clear()</a></li><li><a href="#replacedata-1">replace(data)</a></li><li><a href="#deletedelete_tabletrue">delete(delete_table=True)</a></li><li><a href="#__init__plugindatagrid-columnsnone-row_pivotsnone-column_pivotsnone-aggregatesnone-sortnone-filtersnone-computed_columnsnone-plugin_confignone-darknone-editablefalse">_<em>init</em>_(plugin='datagrid', columns=None, row_pivots=None, column_pivots=None, aggregates=None, sort=None, filters=None, computed_columns=None, plugin_config=None, dark=None, editable=False)</a></li><li><a href="#property-table">property table()</a></li><li><a href="#property-view">property view()</a></li><li><a href="#loadtable_or_data-options">load(table_or_data, **options)</a></li><li><a href="#updatedata-1">update(data)</a></li><li><a href="#clear-2">clear()</a></li><li><a href="#replacedata-2">replace(data)</a></li><li><a href="#save">save()</a></li><li><a href="#restorekwargs">restore(**kwargs)</a></li><li><a href="#reset">reset()</a></li><li><a href="#deletedelete_tabletrue-1">delete(delete_table=True)</a></li></ul></li><li><a href="#perspectivetornadohandler">PerspectiveTornadoHandler</a><ul class="toc-headings"><li><a href="#__init__args-kwargs">_<em>init</em>_(*args, **kwargs)</a></li><li><a href="#check_originorigin">check_origin(origin)</a></li><li><a href="#on_messagemessage">on_message(message)</a></li><li><a href="#postmessage-binaryfalse">post(message, binary=False)</a></li><li><a href="#on_close">on_close()</a></li></ul></li><li><a href="#perspectivemanager">PerspectiveManager</a><ul class="toc-headings"><li><a href="#lock">lock()</a></li><li><a href="#unlock">unlock()</a></li><li><a href="#hostitem-namenone">host(item, name=None)</a></li><li><a href="#host_tablename-table">host_table(name, table)</a></li><li><a href="#host_viewname-view">host_view(name, view)</a></li><li><a href="#get_tablename">get_table(name)</a></li><li><a href="#get_viewname">get_view(name)</a></li><li><a href="#__init__manager">_<em>init</em>_(manager)</a></li><li><a href="#processmessage-post_callback">process(message, post_callback)</a></li><li><a href="#close">close()</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/md/installation.html">Installation</a><a href="/docs/md/js.html">Javascript User Guide</a><a href="/docs/md/python.html">Python User Guide</a><a href="/docs/obj/perspective.html">Perspective API</a><a href="/docs/obj/perspective-viewer.html">Perspective Viewer API</a><a href="/docs/obj/perspective-python-table.html">Perspective Python API</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/finos/perspective/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Perspective Authors</section></footer></div></body></html>

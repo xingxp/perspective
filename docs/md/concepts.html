@@ -94,7 +94,7 @@ dataset.</p>
 <p>The columns of a <code>Table</code> are <em>immutable after creation</em>, which means their names
 and data types cannot be changed after the <code>Table</code> has been created. Columns
 cannot be added or deleted after creation, but a <code>View</code> can be used to select
-an arbitary set of columns from the <code>Table</code>.</p>
+an arbitrary set of columns from the <code>Table</code>.</p>
 <p>The immutability of columns and data types after creation is important, as it
 allows Perspective to operate quickly over a large dataset and accumulate data
 without additional recalculation.</p>
@@ -108,10 +108,10 @@ without additional recalculation.</p>
     <span class="hljs-attr">d</span>: <span class="hljs-string">"datetime"</span>,
     <span class="hljs-attr">e</span>: <span class="hljs-string">"boolean"</span>,
     <span class="hljs-attr">f</span>: <span class="hljs-string">"string"</span>
-}
+};
 </code></pre>
 <p>Because Perspective is built in multiple languages, data types are
-expressed with a common vocabulary of across all supported host languyages.
+expressed with a common vocabulary of across all supported host languages.
 These <em>String</em> types are used to represent the data supported by Perspective:</p>
 <ul>
 <li><code>&quot;integer&quot;</code>: a 32-bit (or 64-bit depending on platform) integer</li>
@@ -152,7 +152,7 @@ the <code>Table</code> would exceed its <code>limit</code>, rows that exceed <co
 oldest rows in the <code>Table</code>.</p>
 <p>To create a <code>Table</code> with a <code>limit</code>, provide the <code>limit</code> property with an integer
 indicating the <code>limit</code>:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> table = perspective.table(data, {<span class="hljs-attr">limit</span>: <span class="hljs-number">1000</span>})
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> table = perspective.table(data, {<span class="hljs-attr">limit</span>: <span class="hljs-number">1000</span>});
 </code></pre>
 <p><code>limit</code> cannot be used in conjunction with <code>index</code>.</p>
 <h3><a class="anchor" aria-hidden="true" id="index"></a><a href="#index" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Index</h3>
@@ -163,7 +163,7 @@ cannot be changed or removed after the <code>Table</code> creation. A column of 
 may be used as an <code>index</code>.</p>
 <p>To create an indexed <code>Table</code>, provide the <code>index</code> property with a string column
 name to be used as an index:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> table = perspective.table(data, {<span class="hljs-attr">index</span>: <span class="hljs-string">"a"</span>})
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> table = perspective.table(data, {<span class="hljs-attr">index</span>: <span class="hljs-string">"a"</span>});
 </code></pre>
 <p>An indexed <code>Table</code> allows for in-place <em>updates</em> whenever a new rows shares an
 <code>index</code> values with an existing row, <em>partial updates</em> when such a row leaves
@@ -185,15 +185,18 @@ table.update(new_data);
 However, if <code>index</code> is set, Perspective allows <em>partial updates</em> (in-place)
 using the <code>index</code> to determine which rows to update:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-comment">// Create an indexed table</span>
-<span class="hljs-keyword">const</span> table = perspective.table({
-    <span class="hljs-string">"id"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],
-    <span class="hljs-string">"name"</span>: [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-string">"d"</span>]
-}, {<span class="hljs-attr">index</span>: <span class="hljs-string">"id"</span>});
+<span class="hljs-keyword">const</span> table = perspective.table(
+    {
+        <span class="hljs-attr">id</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],
+        <span class="hljs-attr">name</span>: [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-string">"d"</span>]
+    },
+    {<span class="hljs-attr">index</span>: <span class="hljs-string">"id"</span>}
+);
 
 <span class="hljs-comment">// Update rows with primary key `1` and `4`</span>
 table.update({
-    <span class="hljs-string">"id"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>],
-    <span class="hljs-string">"name"</span>: [<span class="hljs-string">"x"</span>, <span class="hljs-string">"y"</span>]
+    <span class="hljs-attr">id</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>],
+    <span class="hljs-attr">name</span>: [<span class="hljs-string">"x"</span>, <span class="hljs-string">"y"</span>]
 });
 </code></pre>
 <p>Provide a dataset with the rows to be updated as specified by primary key, and
@@ -204,10 +207,13 @@ no primary keys are specified, or if the specified keys are not present in the
 <h3><a class="anchor" aria-hidden="true" id="remove"></a><a href="#remove" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>remove()</code></h3>
 <p>An indexed <code>Table</code> can also have rows removed by primary key:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-comment">// Create an indexed table</span>
-<span class="hljs-keyword">const</span> table = perspective.table({
-    <span class="hljs-string">"id"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],
-    <span class="hljs-string">"name"</span>: [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-string">"d"</span>]
-}, {<span class="hljs-attr">index</span>: <span class="hljs-string">"id"</span>});
+<span class="hljs-keyword">const</span> table = perspective.table(
+    {
+        <span class="hljs-attr">id</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],
+        <span class="hljs-attr">name</span>: [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-string">"d"</span>]
+    },
+    {<span class="hljs-attr">index</span>: <span class="hljs-string">"id"</span>}
+);
 
 <span class="hljs-comment">// Remove rows with primary key `1` and `4`</span>
 table.remove([<span class="hljs-number">1</span>, <span class="hljs-number">4</span>]);
@@ -238,8 +244,8 @@ query on the <code>Table</code>'s dataset and is always created from an existing
 instance via the <code>view()</code> method with a set of
 <a href="https://perspective.finos.org/docs/obj/perspective.html#module_perspective..table+view"><code>View</code> configuration parameters</a>:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> table = perspective.table({
-    <span class="hljs-string">"id"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],
-    <span class="hljs-string">"name"</span>: [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-string">"d"</span>]
+    <span class="hljs-attr">id</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],
+    <span class="hljs-attr">name</span>: [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-string">"d"</span>]
 });
 
 <span class="hljs-comment">// Create a view showing just the `name` column.</span>
@@ -247,8 +253,11 @@ instance via the <code>view()</code> method with a set of
     <span class="hljs-attr">columns</span>: [<span class="hljs-string">"name"</span>]
 });
 
-<span class="hljs-comment">// Now you have a `View`!  Get your data!</span>
-<span class="hljs-keyword">const</span> json = <span class="hljs-keyword">await</span> view.to_json();
+<span class="hljs-comment">// Now you have a `View`!  Get your data using ES6 async/await:</span>
+<span class="hljs-keyword">const</span> json = <span class="hljs-keyword">async</span> () =&gt; <span class="hljs-keyword">await</span> view.to_json();
+
+<span class="hljs-comment">// or using the Promise API</span>
+view.to_arrow().then(<span class="hljs-function"><span class="hljs-params">arrow</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(arrow));
 
 <span class="hljs-comment">// Delete the Query!</span>
 view.delete();
