@@ -88,20 +88,19 @@ packages, e.g. <code>examples/simple</code> like so:</p>
 <p><a href="https://docs.docker.com/install/">Docker</a> images with pre-built development
 environments are provided for the Javascript and Python libraries.</p>
 <p>To build Perspective using Docker, select the option in <code>yarn setup</code>.</p>
-<h3><a class="anchor" aria-hidden="true" id="system-dependencies"></a><a href="#system-dependencies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>System Dependencies</h3>
-<p>Perspective requires some system dependencies to be installed before it can be
-built from source:</p>
-<ul>
-<li>Boost (version 1.67)</li>
-<li>CMake (version 3.15.4 or higher)</li>
-<li>TBB</li>
-<li><a href="https://google.github.io/flatbuffers/flatbuffers_guide_building.html">Flatbuffers</a></li>
-</ul>
-<h3><a class="anchor" aria-hidden="true" id="perspectivejs"></a><a href="#perspectivejs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Perspective.js</code></h3>
+<h2><a class="anchor" aria-hidden="true" id="perspectivejs"></a><a href="#perspectivejs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Perspective.js</code></h2>
 <p>To build the Javascript library, which includes WebAssembly compilation,
 <a href="https://github.com/kripken/emscripten">Emscripten</a> and its prerequisites are
 required. A Docker image is provided with the correct environment and
 prerequisites.</p>
+<h4><a class="anchor" aria-hidden="true" id="system-dependencies"></a><a href="#system-dependencies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>System Dependencies</h4>
+<p>Perspective requires some system dependencies to be installed before it can be
+built using local Emscripten:</p>
+<ul>
+<li>Boost (version 1.67)</li>
+<li>CMake (version 3.15.4 or higher)</li>
+<li><a href="https://google.github.io/flatbuffers/flatbuffers_guide_building.html">Flatbuffers</a></li>
+</ul>
 <h4><a class="anchor" aria-hidden="true" id="building-via-emsdk"></a><a href="#building-via-emsdk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Building via EMSDK</h4>
 <p>To build using local Emscripten,
 <a href="https://emscripten.org/docs/getting_started/downloads.html">install</a> the
@@ -115,7 +114,7 @@ to debug.</p>
 <p>To install this specific version of Emscripten:</p>
 <pre><code class="hljs css language-bash">./emsdk install 1.39.13
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="perspective-python"></a><a href="#perspective-python" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>perspective-python</code></h3>
+<h2><a class="anchor" aria-hidden="true" id="perspective-python"></a><a href="#perspective-python" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>perspective-python</code></h2>
 <p>To build the Python library, run:</p>
 <pre><code class="hljs css language-bash">yarn build_python
 </code></pre>
@@ -123,27 +122,35 @@ to debug.</p>
 To build the Python 2 version of the library, use the <code>--python2</code> flag:</p>
 <pre><code class="hljs css language-bash">yarn build_python --python2
 </code></pre>
+<h3><a class="anchor" aria-hidden="true" id="system-dependencies-1"></a><a href="#system-dependencies-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>System Dependencies</h3>
+<p><code>perspective-python</code> requires the following system dependencies to be installed before it can be
+built from source:</p>
+<ul>
+<li>Boost (version 1.67)</li>
+<li>CMake (version 3.15.4 or higher)</li>
+<li>TBB</li>
+</ul>
 <h2><a class="anchor" aria-hidden="true" id="system-specific-instructions"></a><a href="#system-specific-instructions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>System-Specific Instructions</h2>
-<h3><a class="anchor" aria-hidden="true" id="macososx-specific-instructions"></a><a href="#macososx-specific-instructions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MacOS/OSX specific instructions</h3>
+<h3><a class="anchor" aria-hidden="true" id="macososx"></a><a href="#macososx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MacOS/OSX</h3>
+<p>Install system dependencies through Homebrew:</p>
+<pre><code class="hljs css language-bash">brew install cmake
+brew install boost@1.67
+brew install tbb
+brew install flatbuffers
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="emscripten"></a><a href="#emscripten" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Emscripten</h4>
 <p>Installing and activating the latest
 <a href="https://github.com/kripken/emscripten">Emscripten SDK</a>:</p>
 <pre><code class="hljs css language-bash">./emsdk install latest
 ./emsdk activate latest
 </code></pre>
-<p>You'll also need the system dependencies noted earlier - installing them through
-Homebrew is the easiest way, especially as flatbuffers can be installed through
-<code>brew</code> without building from source:</p>
-<pre><code class="hljs css language-bash">brew install boost@1.67
-brew install tbb
-brew install cmake
-brew install flatbuffers
-</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="perspective-python-1"></a><a href="#perspective-python-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>perspective-python</code></h4>
 <p>If building the Python 2 version of the library, make sure your version of
 Python 2 is the latest version (<code>2.7.17</code>) supplied by Homebrew, and not the
 earlier version that ships with MacOS. To install Python 2 using Homebrew:</p>
 <pre><code class="hljs css language-bash">brew install python2
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="windows-10-specific-instructions"></a><a href="#windows-10-specific-instructions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Windows 10 specific instructions</h3>
+<h3><a class="anchor" aria-hidden="true" id="windows-10"></a><a href="#windows-10" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Windows 10</h3>
 <p>You need to use bash in order to build Perspective packages. To successfully
 build on Windows 10, enable
 <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a>
@@ -246,4 +253,4 @@ probably be standard practice after making a large change which may affect
 performance, but please create a baseline <code>results.json</code> entry for your test
 machine on a commit before your changes first, such that the effects of your PR
 can be properly compared.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/md/styles.html"><span class="arrow-prev">← </span><span>CSS Styles</span></a><a class="docs-next button" href="/docs/obj/perspective.html"><span>perspective API</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#building">Building</a><ul class="toc-headings"><li><a href="#system-dependencies">System Dependencies</a></li><li><a href="#perspectivejs"><code>Perspective.js</code></a></li><li><a href="#perspective-python"><code>perspective-python</code></a></li></ul></li><li><a href="#system-specific-instructions">System-Specific Instructions</a><ul class="toc-headings"><li><a href="#macososx-specific-instructions">MacOS/OSX specific instructions</a></li><li><a href="#windows-10-specific-instructions">Windows 10 specific instructions</a></li><li><a href="#ubuntudebian">Ubuntu/Debian</a></li></ul></li><li><a href="#testing">Testing</a><ul class="toc-headings"><li><a href="#javascript">Javascript</a></li><li><a href="#python">Python</a></li></ul></li><li><a href="#benchmarking">Benchmarking</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/md/installation.html">Installation</a><a href="/docs/md/js.html">Javascript User Guide</a><a href="/docs/md/python.html">Python User Guide</a><a href="/docs/obj/perspective.html">Perspective API</a><a href="/docs/obj/perspective-viewer.html">Perspective Viewer API</a><a href="/docs/obj/perspective-python-table.html">Perspective Python API</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/finos/perspective/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Perspective Authors</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/md/styles.html"><span class="arrow-prev">← </span><span>CSS Styles</span></a><a class="docs-next button" href="/docs/obj/perspective.html"><span>perspective API</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#building">Building</a></li><li><a href="#perspectivejs"><code>Perspective.js</code></a></li><li><a href="#perspective-python"><code>perspective-python</code></a><ul class="toc-headings"><li><a href="#system-dependencies-1">System Dependencies</a></li></ul></li><li><a href="#system-specific-instructions">System-Specific Instructions</a><ul class="toc-headings"><li><a href="#macososx">MacOS/OSX</a></li><li><a href="#windows-10">Windows 10</a></li><li><a href="#ubuntudebian">Ubuntu/Debian</a></li></ul></li><li><a href="#testing">Testing</a><ul class="toc-headings"><li><a href="#javascript">Javascript</a></li><li><a href="#python">Python</a></li></ul></li><li><a href="#benchmarking">Benchmarking</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/md/installation.html">Installation</a><a href="/docs/md/js.html">Javascript User Guide</a><a href="/docs/md/python.html">Python User Guide</a><a href="/docs/obj/perspective.html">Perspective API</a><a href="/docs/obj/perspective-viewer.html">Perspective Viewer API</a><a href="/docs/obj/perspective-python-table.html">Perspective Python API</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/finos/perspective/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Perspective Authors</section></footer></div></body></html>
