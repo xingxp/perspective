@@ -106,11 +106,13 @@ jobs:
     - bash: yarn
       displayName: 'Install Deps'
 
-    - bash: python -m pip install "black==20.8b1" flake8-black
-      condition: and(succeeded(), ne(variables['python.version'], '2.7'))
-      displayName: 'Install Python deps'
+    - ${{ if not(eq(variables['python.version'], '2.7')) }}:
 
-    - bash: yarn build_python  --ci $(python_flag) $(manylinux_flag)
+      - script: |
+          python -m pip install "black==20.8b1" flake8-black"
+        displayName: "Install Python3 deps"
+
+    - bash: yarn build_python --ci $(python_flag) $(manylinux_flag)
       displayName: 'build'
       env:
         PSP_DOCKER: 1
@@ -181,7 +183,7 @@ jobs:
 #       displayName: "Which python"
 
 #     - script: |
-#         python -m pip install numpy "pyarrow>=0.16.0,<1"
+#         python -m pip install numpy "pyarrow>=1.0.1,<2"
 #       displayName: "Python deps"
 
 #     - script: npm install -g yarn
@@ -251,9 +253,17 @@ jobs:
           which python$(python.version)
         displayName: "Which python"
 
-      - script: |
-          python -m pip install delocate wheel numpy "black==20.8b1" flake8-black "pyarrow>=0.16.0,<1"
-        displayName: "Python deps"
+      - ${{ if not(eq(variables['python.version'], '2.7')) }}:
+
+        - script: |
+            python -m pip install delocate wheel numpy "black==20.8b1" flake8-black "pyarrow>=1.0.1,<2"
+          displayName: "Python3 deps"
+      
+      - ${{ if eq(variables['python.version'], '2.7') }}:
+
+        - script: |
+            python -m pip install delocate wheel numpy "black==20.8b1" flake8-black "pyarrow<2"
+          displayName: "Python2 deps"
 
       - script: npm install -g yarn
         displayName: "Install Yarn"
@@ -295,7 +305,6 @@ jobs:
 
   strategy:
     matrix:
-
       Python27:
         python.version: '2.7'
         python_flag: '--python2'
@@ -338,8 +347,14 @@ jobs:
       displayName: "Which python"
 
     - script: |
-        python -m pip install delocate wheel numpy "pyarrow>=0.16.0,<1"
-      displayName: "Python deps"
+        python -m pip install delocate wheel numpy "pyarrow>=1.0.1,<2"
+      displayName: "Python3 deps"
+      condition: not(eq(variables['python.version'], '2.7'))
+    
+    - script: |
+        python -m pip install delocate wheel numpy "pyarrow<2"
+      displayName: "Python2 deps"
+      condition: eq(variables['python.version'], '2.7')
 
     - script: npm install -g yarn
       displayName: "Install Yarn"
