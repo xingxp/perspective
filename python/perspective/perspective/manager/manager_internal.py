@@ -64,9 +64,9 @@ class _PerspectiveManagerInternal(object):
 
     def __process(self, msg, post_callback, client_id=None):
         if isinstance(msg, string_types):
-            if msg == "heartbeat":
-                # Ignore heartbeats that reach the manager - they should be
-                # handled in the transport layer.
+            if msg == "ping":
+                # Ignore ping heartbeats that reach the manager - they should
+                # be handled in the transport layer.
                 return
             msg = json.loads(msg)
 

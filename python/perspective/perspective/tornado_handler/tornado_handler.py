@@ -81,9 +81,9 @@ class PerspectiveTornadoHandler(tornado.websocket.WebSocketHandler):
         callback. Contains special logic to handle passing :obj:`ArrayBuffer`
         objects over the wire from JS to Python, and vice-versa.
         """
-        if message == "heartbeat":
-            # Respond to heartbeats from the client.
-            self.write_message("heartbeat")
+        if message == "ping":
+            # Respond to ping heartbeats from the client.
+            self.write_message("pong")
             return
 
         # The message is an ArrayBuffer, and it needs to be combined with the
