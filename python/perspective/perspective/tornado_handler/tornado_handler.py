@@ -22,8 +22,8 @@ class PerspectiveTornadoHandler(tornado.websocket.WebSocketHandler):
     with `IOLoop.current()` in order to defer expensive operations until the
     next free iteration of the event loop.
 
-    To keep the websocket connection alive, set your Tornado application's
-    ``websocket_ping_interval`` configuration variable.
+    The Perspective client and server will automatically keep the Websocket
+    alive without timing out.
 
     Examples:
         >>> MANAGER = PerspectiveManager()
@@ -82,6 +82,8 @@ class PerspectiveTornadoHandler(tornado.websocket.WebSocketHandler):
         objects over the wire from JS to Python, and vice-versa.
         """
         if message == "heartbeat":
+            # Respond to heartbeats from the client.
+            self.write_message("heartbeat")
             return
 
         # The message is an ArrayBuffer, and it needs to be combined with the
